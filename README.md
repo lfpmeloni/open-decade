@@ -96,8 +96,9 @@ git clone https://github.com/lfpmeloni/open-decade.git
 ```
 
 To review or develop the project now, start with [CONTRIBUTING.md](CONTRIBUTING.md).
-An agent should read [AGENTS.md](AGENTS.md). No private founder documents are
-required to contribute.
+An agent should read [AGENTS.md](AGENTS.md). This repository must contain every
+script, runtime skill, and instruction needed for its advertised capabilities,
+using only the documented prerequisites.
 
 | Source | Owns |
 |---|---|

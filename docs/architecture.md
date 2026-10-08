@@ -35,14 +35,15 @@ its host, as described in [SECURITY.md](../SECURITY.md).
 
 ## Storage and ownership
 
-Project code, public documentation, and synthetic fixtures belong in the code
-repository. Private founder notes may remain in ignored `dev/`, but no public
-guide or build may depend on them. Do not maintain personal data on another
-branch of the code repository.
+Project code, runtime skills, public documentation, contributor checks, and
+synthetic fixtures belong in this repository. Every advertised feature and its
+required build or test step must work from a fresh public clone using documented
+prerequisites. Do not depend on a maintainer's checkout, untracked scripts,
+private remotes, or files installed through a maintainer's personal agent setup.
 
-The founder's `dev/` directory is an independent private Git repository with its
-own history and remote. The public repository ignores the entire directory; it
-is not a submodule and records no pointer to it. Public clones work without it.
+Personal records belong in the user's vault, not on another branch of the code
+repository. Maintainer-specific repository arrangements are not part of the
+public product architecture.
 
 The planned default vault is `~/.open-decade/vaults/default`, outside the project.
 `OPEN_DECADE_VAULT` overrides it; relative paths resolve from the project root.

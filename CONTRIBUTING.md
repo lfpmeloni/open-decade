@@ -2,8 +2,8 @@
 
 Start with [README.md](README.md) for current availability and
 [the architecture](docs/architecture.md) for design boundaries. This is the
-complete contribution process for people and agents; private planning is not
-required.
+complete contribution process for people and agents, using the published source
+and documented prerequisites.
 
 ## Working today
 
@@ -123,8 +123,10 @@ when sustained shared maintenance warrants it.
 
 The first code release must add a version and changelog. Each release records
 new capabilities, known limits, supported runtime/agent environments, and schema
-compatibility. Validate its example flow from a clean checkout with a synthetic
-external vault. Inspect the actual release/package contents for private material;
+compatibility. Validate its example flow from a fresh public clone with a
+synthetic external vault and only the documented prerequisites. Required checks
+must work without maintainer-only tools or agent configuration. Inspect the
+actual release/package contents for private material;
 gitignore alone does not determine what a packager or archive includes.
 
 Preserve local changes during upgrades; never reset a user's checkout to force an
