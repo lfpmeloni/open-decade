@@ -1,0 +1,19 @@
+# Private founder planning and research.
+/dev/
+
+# Defense in depth: the supported vault lives outside the code tree.
+/vault/
+/.open-decade-vault
+
+# Local credentials; sanitized examples may be versioned deliberately.
+.env
+.env.*
+!.env.example
+
+# Local dependencies, generated output, and diagnostics.
+node_modules/
+coverage/
+dist/
+.cache/
+*.log
+.DS_Store
