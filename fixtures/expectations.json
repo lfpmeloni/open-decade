@@ -1,0 +1,6 @@
+{
+  "performance": {"initial":"100","beforeContribution":"110","contribution":"50","afterContribution":"160","ending":"176","twr":"0.21","cashProfit":"26"},
+  "exposure": {"fundValue":"600","fundWeightX":"0.6","directX":"400","X":"0.76","unknown":"0.24"},
+  "costs": {"weights":["0.6","0.4"],"rates":["0.002","0.005"],"weightedRate":"0.0032"},
+  "simulation": {"initial":"100","monthlyContribution":"10","months":12,"annualReturn":"0","annualVolatility":"0","terminal":"220"}
+}

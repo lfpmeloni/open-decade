@@ -1,0 +1,72 @@
+{
+  "version": "1.0.0",
+  "jurisdiction": "FR",
+  "taxYear": 2025,
+  "reviewedAt": "2026-10-09",
+  "reviewDue": "2027-01-09",
+  "scope": "Document organization and conditional deadline references only; no tax liability, filing decision or submission.",
+  "name": "France",
+  "period": "2025 calendar year, 2026 declaration campaign",
+  "sources": [
+    {
+      "id": "deadline",
+      "publisher": "DGFiP",
+      "url": "https://www.impots.gouv.fr/toutes-les-questions/particulier/quelle-date-dois-je-faire-ma-declaration",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    },
+    {
+      "id": "documents",
+      "publisher": "DGFiP",
+      "url": "https://www.impots.gouv.fr/les-modalites-de-la-declaration-de-revenus-en-2026",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    }
+  ],
+  "deadlines": [
+    {
+      "date": "2026-05-19",
+      "label": "Standard paper declaration deadline",
+      "appliesWhen": "Eligible paper declaration under the standard campaign calendar.",
+      "sourceId": "deadline",
+      "applicability": "not-determined",
+      "timezone": "local-jurisdiction"
+    },
+    {
+      "date": "2026-05-21",
+      "label": "Online zone 1",
+      "appliesWhen": "Departments 01–19 or nonresidents, subject to applicability review.",
+      "sourceId": "deadline",
+      "applicability": "not-determined",
+      "timezone": "local-jurisdiction"
+    },
+    {
+      "date": "2026-05-28",
+      "label": "Online zone 2",
+      "appliesWhen": "Departments 20–54, subject to applicability review.",
+      "sourceId": "deadline",
+      "applicability": "not-determined",
+      "timezone": "local-jurisdiction"
+    },
+    {
+      "date": "2026-06-04",
+      "label": "Online zone 3",
+      "appliesWhen": "Departments 55–976, subject to applicability review.",
+      "sourceId": "deadline",
+      "applicability": "not-determined",
+      "timezone": "local-jurisdiction"
+    }
+  ],
+  "documents": {
+    "income": "Collect IFU and bank/broker income statements and compare prefilled information.",
+    "disposals": "Collect acquisition and disposal evidence for preparer review.",
+    "foreign-accounts": "Collect foreign-account opening/closing and income details; ask about annexes such as 3916.",
+    "wrappers": "Collect PEA, assurance-vie and retirement-wrapper contract/activity records.",
+    "retirement": "Collect pension-income and retirement-contribution statements."
+  },
+  "questions": [
+    "Confirm tax residence and department before considering a deadline.",
+    "Ask which foreign-account annexes or corrections are relevant.",
+    "Treat prefilled information as a source to reconcile, not proof of completeness."
+  ]
+}

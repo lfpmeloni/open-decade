@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 2,
+  "batchId": "synthetic-schema-2",
+  "records": [
+    {
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic-schema-2",
+        "quality": "source-reported",
+        "uncertainties": [],
+        "rawReference": "synthetic statement, page 1"
+      },
+      "kind": "institution",
+      "id": "example-institution",
+      "name": "Synthetic institution",
+      "country": "DE"
+    },
+    {
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic-schema-2",
+        "quality": "source-reported",
+        "uncertainties": [],
+        "rawReference": "synthetic statement, page 1"
+      },
+      "kind": "account",
+      "id": "example-account",
+      "name": "Synthetic account",
+      "currency": "EUR",
+      "ownership": "1",
+      "coverage": "holdings",
+      "institutionId": "example-institution",
+      "wrapper": "User-reported taxable account"
+    },
+    {
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic-schema-2",
+        "quality": "source-reported",
+        "uncertainties": [],
+        "rawReference": "synthetic statement, page 1"
+      },
+      "kind": "position",
+      "id": "example-position",
+      "name": "Unresolved synthetic instrument",
+      "currency": "EUR",
+      "ownership": "1",
+      "accountId": "example-account",
+      "instrumentType": "unknown",
+      "identifiers": [
+        {
+          "scheme": "provider",
+          "value": "synthetic-instrument"
+        }
+      ]
+    },
+    {
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic-schema-2",
+        "quality": "source-reported",
+        "uncertainties": [],
+        "rawReference": "synthetic statement, page 1"
+      },
+      "kind": "observation",
+      "id": "example-value",
+      "entityId": "example-position",
+      "currency": "EUR",
+      "value": "100",
+      "quantity": "20",
+      "unitPrice": "5"
+    },
+    {
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic-schema-2",
+        "quality": "source-reported",
+        "uncertainties": [],
+        "rawReference": "synthetic statement, page 1"
+      },
+      "kind": "trade",
+      "id": "example-trade",
+      "accountId": "example-account",
+      "positionId": "example-position",
+      "side": "buy",
+      "quantity": "10",
+      "unitPrice": "10",
+      "currency": "EUR",
+      "fees": "1",
+      "settlementDate": "2026-01-03"
+    },
+    {
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic-schema-2",
+        "quality": "source-reported",
+        "uncertainties": [],
+        "rawReference": "synthetic statement, page 1"
+      },
+      "kind": "corporate-action",
+      "id": "example-action",
+      "positionId": "example-position",
+      "action": "split",
+      "description": "Synthetic reported split; no inferred cost basis",
+      "quantityBefore": "10",
+      "quantityAfter": "20"
+    },
+    {
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic-schema-2",
+        "quality": "source-reported",
+        "uncertainties": [],
+        "rawReference": "synthetic statement, page 1"
+      },
+      "kind": "profile",
+      "id": "example-profile",
+      "residences": [
+        "DE"
+      ],
+      "baseCurrency": "EUR",
+      "riskTolerance": "high",
+      "riskCapacity": "low"
+    },
+    {
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic-schema-2",
+        "quality": "source-reported",
+        "uncertainties": [],
+        "rawReference": "synthetic statement, page 1"
+      },
+      "kind": "history",
+      "id": "example-history",
+      "accountId": "example-account",
+      "from": "2026-01-01",
+      "through": "2026-01-01",
+      "complete": false,
+      "externalFlowsComplete": false
+    }
+  ]
+}

@@ -1,0 +1,539 @@
+{
+  "schemaVersion": 1,
+  "batchId": "synthetic-v1",
+  "records": [
+    {
+      "id": "cash",
+      "kind": "account",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "cash",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "cash",
+      "currency": "EUR",
+      "ownership": "1",
+      "coverage": "aggregate"
+    },
+    {
+      "id": "cash-opening",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "cash-opening",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "cash",
+      "currency": "EUR",
+      "value": "1000"
+    },
+    {
+      "id": "savings",
+      "kind": "account",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "savings",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "savings",
+      "currency": "EUR",
+      "ownership": "1",
+      "coverage": "aggregate"
+    },
+    {
+      "id": "savings-opening",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "savings-opening",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "savings",
+      "currency": "EUR",
+      "value": "2000"
+    },
+    {
+      "id": "invest",
+      "kind": "account",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "invest",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "invest",
+      "currency": "EUR",
+      "ownership": "1",
+      "coverage": "holdings"
+    },
+    {
+      "id": "invest-aggregate",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "invest-aggregate",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "invest",
+      "currency": "EUR",
+      "value": "1000"
+    },
+    {
+      "id": "fund-position",
+      "kind": "position",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "fund-position",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Synthetic fund",
+      "currency": "EUR",
+      "ownership": "1",
+      "accountId": "invest",
+      "instrumentId": "SYNTH-FUND-ACC"
+    },
+    {
+      "id": "fund-value",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "fund-value",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "fund-position",
+      "currency": "EUR",
+      "value": "600"
+    },
+    {
+      "id": "direct-position",
+      "kind": "position",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "direct-position",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Synthetic issuer X",
+      "currency": "EUR",
+      "ownership": "1",
+      "accountId": "invest",
+      "instrumentId": "SYNTH-X",
+      "issuer": "X"
+    },
+    {
+      "id": "direct-value",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "direct-value",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "direct-position",
+      "currency": "EUR",
+      "value": "400"
+    },
+    {
+      "id": "fund-disclosure",
+      "kind": "fund",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "fund-disclosure",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "instrumentId": "SYNTH-FUND-ACC",
+      "shareClass": "Accumulating synthetic share class",
+      "holdings": [
+        {
+          "instrumentId": "SYNTH-X",
+          "weight": "0.6",
+          "issuer": "X",
+          "country": "Example country",
+          "sector": "Example sector",
+          "assetClass": "equity",
+          "economicCurrency": "EUR"
+        }
+      ],
+      "ongoingCharge": "0.002"
+    },
+    {
+      "id": "home",
+      "kind": "position",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "home",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Joint synthetic property",
+      "currency": "EUR",
+      "ownership": "0.5"
+    },
+    {
+      "id": "home-value",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "home-value",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "home",
+      "currency": "EUR",
+      "value": "100000"
+    },
+    {
+      "id": "mortgage",
+      "kind": "liability",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "mortgage",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Synthetic mortgage",
+      "currency": "EUR",
+      "responsibility": "0.25"
+    },
+    {
+      "id": "mortgage-value",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "mortgage-value",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "mortgage",
+      "currency": "EUR",
+      "value": "60000"
+    },
+    {
+      "id": "cash-history",
+      "kind": "history",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "cash-history",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "cash",
+      "from": "2026-01-01",
+      "through": "2026-12-31",
+      "complete": true,
+      "externalFlowsComplete": true
+    },
+    {
+      "id": "savings-history",
+      "kind": "history",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "savings-history",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "savings",
+      "from": "2026-01-01",
+      "through": "2026-12-31",
+      "complete": true,
+      "externalFlowsComplete": true
+    },
+    {
+      "id": "invest-history",
+      "kind": "history",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "invest-history",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "invest",
+      "from": "2026-01-01",
+      "through": "2026-12-31",
+      "complete": true,
+      "externalFlowsComplete": true
+    },
+    {
+      "id": "salary",
+      "kind": "transaction",
+      "date": "2026-01-02",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "salary",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "cash",
+      "currency": "EUR",
+      "amount": "1000",
+      "classification": "income"
+    },
+    {
+      "id": "expense",
+      "kind": "transaction",
+      "date": "2026-01-02",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "expense",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "cash",
+      "currency": "EUR",
+      "amount": "-100",
+      "classification": "spending"
+    },
+    {
+      "id": "transfer-out",
+      "kind": "transaction",
+      "date": "2026-01-02",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "transfer-out",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "cash",
+      "currency": "EUR",
+      "amount": "-200",
+      "classification": "transfer",
+      "transferId": "savings-transfer"
+    },
+    {
+      "id": "transfer-in",
+      "kind": "transaction",
+      "date": "2026-01-02",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "transfer-in",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "savings",
+      "currency": "EUR",
+      "amount": "200",
+      "classification": "transfer",
+      "transferId": "savings-transfer"
+    },
+    {
+      "id": "principal",
+      "kind": "transaction",
+      "date": "2026-01-02",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "principal",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "cash",
+      "currency": "EUR",
+      "amount": "-100",
+      "classification": "principal",
+      "liabilityId": "mortgage",
+      "liabilityDelta": "-100"
+    },
+    {
+      "id": "interest",
+      "kind": "transaction",
+      "date": "2026-01-02",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "interest",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "cash",
+      "currency": "EUR",
+      "amount": "-20",
+      "classification": "interest"
+    },
+    {
+      "id": "cash-closing",
+      "kind": "observation",
+      "date": "2026-01-31",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "cash-closing",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "cash",
+      "currency": "EUR",
+      "value": "1585"
+    },
+    {
+      "id": "reserve",
+      "kind": "goal",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "reserve",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Synthetic reserve",
+      "currency": "EUR",
+      "target": "5000",
+      "targetDate": "2027-01-01",
+      "entityIds": [
+        "cash",
+        "savings"
+      ]
+    },
+    {
+      "id": "assumptions",
+      "kind": "assumptions",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "assumptions",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "currency": "EUR",
+      "initial": "100",
+      "monthlyContribution": "10",
+      "months": 12,
+      "annualReturn": "0",
+      "annualVolatility": "0",
+      "annualInflation": "0",
+      "target": "220",
+      "returnsNetOfFees": true
+    },
+    {
+      "id": "performance-account",
+      "kind": "account",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "performance-account",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "performance-account",
+      "currency": "EUR",
+      "ownership": "1",
+      "coverage": "aggregate"
+    },
+    {
+      "id": "perf-start",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "perf-start",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "performance-account",
+      "currency": "EUR",
+      "value": "100"
+    },
+    {
+      "id": "perf-end",
+      "kind": "observation",
+      "date": "2026-12-31",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "perf-end",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "performance-account",
+      "currency": "EUR",
+      "value": "176"
+    },
+    {
+      "id": "perf-history",
+      "kind": "history",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "perf-history",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "performance-account",
+      "from": "2026-01-01",
+      "through": "2026-12-31",
+      "complete": true,
+      "externalFlowsComplete": true
+    },
+    {
+      "id": "perf-deposit",
+      "kind": "transaction",
+      "date": "2026-06-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "perf-deposit",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "performance-account",
+      "currency": "EUR",
+      "amount": "50",
+      "classification": "investment",
+      "externalFlow": true,
+      "valueBefore": "110",
+      "valueAfter": "160"
+    }
+  ]
+}

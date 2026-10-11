@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 2,
+  "batchId": "synthetic-planning",
+  "records": [
+    {
+      "id": "bank",
+      "kind": "institution",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "bank",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Synthetic bank",
+      "country": "DE"
+    },
+    {
+      "id": "cash",
+      "kind": "account",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "cash",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "cash",
+      "currency": "EUR",
+      "ownership": "1",
+      "coverage": "aggregate",
+      "institutionId": "bank",
+      "wrapper": "taxable"
+    },
+    {
+      "id": "cash-balance",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "cash-balance",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "cash",
+      "currency": "EUR",
+      "value": "6000"
+    },
+    {
+      "id": "complete",
+      "kind": "history",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "complete",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "cash",
+      "from": "2026-01-01",
+      "through": "2026-12-31",
+      "complete": true,
+      "externalFlowsComplete": true
+    },
+    {
+      "id": "essentials",
+      "kind": "category",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "essentials",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Essential spending",
+      "nature": "essential"
+    },
+    {
+      "id": "salary",
+      "kind": "transaction",
+      "date": "2026-01-02",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "salary",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "cash",
+      "currency": "EUR",
+      "amount": "2000",
+      "classification": "income"
+    },
+    {
+      "id": "rent",
+      "kind": "transaction",
+      "date": "2026-01-02",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "rent",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "accountId": "cash",
+      "currency": "EUR",
+      "amount": "-1000",
+      "classification": "spending",
+      "categorySplits": [
+        {
+          "categoryId": "essentials",
+          "amount": "-1000"
+        }
+      ]
+    },
+    {
+      "id": "budget",
+      "kind": "budget",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "budget",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Essential budget",
+      "categoryId": "essentials",
+      "currency": "EUR",
+      "amount": "1100",
+      "from": "2026-01-01",
+      "through": "2026-01-31"
+    },
+    {
+      "id": "policy",
+      "kind": "investment-policy",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "policy",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Synthetic explicit preferences",
+      "currency": "EUR",
+      "reserveMonths": "3",
+      "maxInstitutionWeight": "1",
+      "maxIssuerWeight": "1",
+      "liquidEntityIds": [
+        "cash"
+      ],
+      "assetBands": [],
+      "reviewDate": "2027-01-01",
+      "rationale": "Synthetic example only; these are not recommended thresholds."
+    },
+    {
+      "id": "person",
+      "kind": "profile",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "person",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "residences": [
+        "DE"
+      ],
+      "riskTolerance": "high",
+      "riskCapacity": "low"
+    },
+    {
+      "id": "expense",
+      "kind": "planned-expense",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "expense",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Planned purchase",
+      "currency": "EUR",
+      "amount": "500",
+      "dueDate": "2026-03-01",
+      "essential": false
+    },
+    {
+      "id": "review",
+      "kind": "reminder",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "review",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "title": "Review insurance and beneficiary documents",
+      "dueDate": "2026-02-01",
+      "enabled": true,
+      "completed": false,
+      "topic": "insurance",
+      "documentIds": []
+    },
+    {
+      "id": "fees",
+      "kind": "fee-scenario",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "fees",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "currency": "EUR",
+      "initial": "1000",
+      "annualGrossReturn": "0.1",
+      "currentAnnualFee": "0.02",
+      "alternativeAnnualFee": "0.01",
+      "years": 1
+    },
+    {
+      "id": "tax-de",
+      "kind": "tax-context",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "tax-de",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "jurisdiction": "DE",
+      "taxYear": 2025,
+      "residence": "resident",
+      "investmentIncome": "unknown",
+      "disposals": "unknown",
+      "foreignAccounts": "unknown",
+      "wrappers": "unknown",
+      "retirementIncome": "unknown",
+      "specialCases": []
+    }
+  ]
+}

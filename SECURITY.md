@@ -1,7 +1,7 @@
 # Security and privacy
 
-**Status:** this policy defines implementation requirements. No product runtime
-or security controls have shipped yet. See [README.md](README.md#current-status).
+**Status:** the schema 1/2 offline runtime implements the local boundaries below.
+No public release has been published. See [README.md](README.md#current-status).
 
 ## Boundaries
 
@@ -65,3 +65,21 @@ sensitive findings local and ask the maintainer for a private alternative.
 Do not open a public issue containing personal data, credentials, or a reproducible
 exploit against a live account. A report should use synthetic input, identify the
 affected version and behavior, and explain impact and reproduction.
+
+Verified backups contain the entire vault and are not redacted or encrypted.
+Use [the recovery workflow](workflows/recovery.md) for limits, separate-destination
+restore, and explicit migration. Checksums detect corruption, not authenticity.
+
+The optional [ECB acquisition boundary](workflows/public-data.md) contacts a fixed
+public endpoint only on explicit `data fetch`. It sends no account records and
+stores responses without applying them. No provider credentials are implemented.
+[Sharing exports](workflows/reviews.md) have a narrow aggregate allowlist; amounts
+and dates can still identify someone. Full exports, saved reports and backups retain
+personal information. Calendar exports include no alarms or external delivery.
+
+Household participation flags and member tax routing are report controls only.
+Shared vault access permits reading all files, immutable history, saved reports and
+backups. Withdrawal of participation does not delete those copies. Use separate
+vaults when independent access is required; no per-member authentication is implemented.
+
+Experimental [Flex reporting](workflows/connections.md) reads tokens only through OS credential utilities in the explicit CLI sync boundary. No setter accepts secrets through agent arguments, vault files or environment variables. Disconnect disables the local connection and attempts local secret deletion; remote revocation remains a provider-portal action. Cached financial responses belong to private vault backups, never public fixtures.

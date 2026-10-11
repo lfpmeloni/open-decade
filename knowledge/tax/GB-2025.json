@@ -1,0 +1,56 @@
+{
+  "version": "1.0.0",
+  "jurisdiction": "GB",
+  "taxYear": 2025,
+  "reviewedAt": "2026-10-09",
+  "reviewDue": "2027-01-09",
+  "scope": "Document organization and conditional deadline references only; no tax liability, filing decision or submission.",
+  "name": "United Kingdom",
+  "period": "6 April 2025 to 5 April 2026",
+  "sources": [
+    {
+      "id": "deadline",
+      "publisher": "HMRC",
+      "url": "https://www.gov.uk/self-assessment-tax-returns/deadlines",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    },
+    {
+      "id": "documents",
+      "publisher": "HMRC",
+      "url": "https://www.gov.uk/keeping-your-pay-tax-records/savings-investments-and-pensions",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    }
+  ],
+  "deadlines": [
+    {
+      "date": "2026-10-31",
+      "label": "Standard paper Self Assessment return deadline",
+      "appliesWhen": "2025–26 paper return where the standard deadline applies; a later notice may set a different date.",
+      "sourceId": "deadline",
+      "applicability": "not-determined",
+      "timezone": "local-jurisdiction"
+    },
+    {
+      "date": "2027-01-31",
+      "label": "Standard online Self Assessment return deadline",
+      "appliesWhen": "2025–26 online return where the standard deadline applies; confirm any different HMRC notice.",
+      "sourceId": "deadline",
+      "applicability": "not-determined",
+      "timezone": "local-jurisdiction"
+    }
+  ],
+  "documents": {
+    "income": "Collect interest, dividend and employment-income statements.",
+    "disposals": "Collect purchase/disposal statements and costs for review.",
+    "foreign-accounts": "Collect foreign income, account and withholding evidence.",
+    "wrappers": "Collect ISA and pension account records; ask which information is relevant.",
+    "retirement": "Collect pension income and contribution records."
+  },
+  "questions": [
+    "Confirm the 6 April–5 April period rather than assuming a calendar year.",
+    "Ask whether residence, foreign-income rules or a notice to file changes applicability.",
+    "Do not infer that Self Assessment is required from an account balance."
+  ]
+}

@@ -1,14 +1,15 @@
 # Architecture
 
-**Status: accepted design, not implemented.** See [current availability](../README.md#current-status).
-This document owns boundaries and data lifecycle. Executable schemas and
-capability definitions will own exact fields and feature status when they exist.
+**Status: implemented offline architecture, schema versions 1 and 2.** See [current availability](../README.md#current-status).
+This document owns boundaries and data lifecycle. [Executable schemas](../schemas/batch-v1.json) and
+[capability definitions](../src/capabilities.mjs) own exact fields and feature status.
 
 ## Structure
 
 Use JavaScript ES modules, a single `node bin/od.mjs` entry point, and readable
-local files. Start with one process and one writer per vault. No application
-server, custom agent harness, database service, or worker queue is required.
+local files. Use one writer per vault. The optional loopback browser service and stdio MCP
+adapter call the same validated domain operations. CLI-only use needs neither
+service; no database, embedded model or worker queue is required.
 
 ```text
 User <-> chosen agent -> CLI -> validation / domain calculations -> report
@@ -28,8 +29,8 @@ Manual input / CSV -> adapter -> preview -> confirmed atomic batch -> vault
 | Vault | Personal records, source documents, preferences, and derived reports |
 | Capability registry | Implementation maturity, requirements, and workflow routing |
 
-Keep domain calculations independent of network access and model calls. Future
-network adapters acquire data through a shared boundary with source-specific
+Keep domain calculations independent of network access and model calls. Optional
+network adapters acquire data through explicit boundaries with source-specific
 timeouts, limits, and provenance. The agent's own network access is governed by
 its host, as described in [SECURITY.md](../SECURITY.md).
 
@@ -45,7 +46,7 @@ Personal records belong in the user's vault, not on another branch of the code
 repository. Maintainer-specific repository arrangements are not part of the
 public product architecture.
 
-The planned default vault is `~/.open-decade/vaults/default`, outside the project.
+The default vault is `~/.open-decade/vaults/default`, outside the project.
 `OPEN_DECADE_VAULT` overrides it; relative paths resolve from the project root.
 All access goes through one path resolver. Validate resolved paths, including
 symlinks, before writes. Reject vault locations inside the code working tree.
@@ -72,8 +73,9 @@ This is a bounded local journal, not a distributed event-processing system.
 
 The initial contract must represent accounts, assets/positions, liabilities,
 dated balances and valuations, transactions, goals, and source provenance.
-One vault represents one person. Joint asset ownership and debt responsibility
-are separate explicit shares; do not assume they are equal.
+Personal reports represent one person. An explicit experimental household report
+uses separately declared gross-value shares; it never rewrites personal ownership.
+Joint asset ownership and debt responsibility are separate explicit shares; do not assume they are equal.
 
 - **Observations are not events.** An opening balance, current holding, or
   property valuation does not imply an acquisition or income transaction.
@@ -121,10 +123,10 @@ Import is not reconciliation by assumption: report discrepancies between a
 statement's closing balance and the recorded activity. Do not fabricate balancing
 transactions. Keep source documents private even when the imported subset is small.
 
-## Planned CLI contracts
+## CLI contracts
 
-These commands do not exist yet. Do not create empty commands just to advertise
-them. The first CLI implementation will document exact usage and exit codes.
+Exact usage and recovery are in the [workflow](../workflows/local-analysis.md);
+[contracts](contracts.md) own CSV, confirmation, versioning and exit codes.
 
 | Interface | Contract |
 |---|---|
@@ -142,7 +144,7 @@ Return nonzero for failure; useful partial results carry explicit coverage warni
 
 ## Capabilities and progressive use
 
-The registry will distinguish `planned`, `experimental`, `available`, and
+The registry distinguishes `planned`, `experimental`, `available`, and
 `deprecated` implementation states. Unsupported requests fall outside implemented
 entries. Separately assess runtime prerequisites and user-data readiness: a working
 feature blocked by missing FX is different from a feature that has not been built.
@@ -189,7 +191,36 @@ explicit migration preview/apply, backup/restore, and compatibility checks. Olde
 code must refuse unsupported schema writes. Follow the release process in
 [CONTRIBUTING.md](../CONTRIBUTING.md).
 
-Defer a custom updater, parallel jobs, a plugin marketplace, automatic scheduling,
-and a dashboard. Add them only for demonstrated needs. Future ETF analytics must
-distinguish missing look-through coverage, share classes, trading currency, and
-economic exposure; future performance methods must state their history requirements.
+The [roadmap](roadmap.md) authorizes a local browser application, bounded stdio MCP
+adapter, opt-in scheduling, and optional read-only providers in staged rounds.
+They share domain operations and proposal confirmation with the CLI.
+A custom updater, plugin marketplace and embedded chat remain deferred. ETF and performance methods
+document their supplied-data coverage and history
+requirements in [methods](../knowledge/methods.md). Verified production account connections and most named provider
+imports remain planned; bounded OFX, Wise CSV, ECB FX/economic acquisition and
+IBKR Flex mapped reporting are experimental.
+Country/year document organization has scoped acceptance; built-in OCR remains deferred.
+Tax scope is document guidance only, without calculation or filing.
+See [schema 2](schema-2.md) and [recovery](../workflows/recovery.md) for the implemented
+separate-destination migration and backup boundary.
+
+The same report dispatcher owns spending, policy diagnosis, document checklists and
+local reminders. `reviews.mjs` persists immutable result snapshots separately from
+financial batches. `portable-exports.mjs` renders bounded documents; aggregate
+sharing uses an explicit field allowlist. Public-data acquisition is isolated in
+`public-data.mjs`; only the explicit CLI fetch reaches a fixed external endpoint.
+Cached vintages become financial records solely through ordinary preview/apply.
+
+Household participation and tax member routing are report-level controls, not an
+access-control system. Use separate vaults for independent access boundaries. The
+[household method](../workflows/household.md) owns its explicit gross-share model.
+[Quote comparisons](../workflows/comparisons.md) use supplied dated assumptions and
+never perform provider acquisition or financial execution.
+
+The experimental [reporting connection boundary](../workflows/connections.md) is CLI-only for acquisition and credential access. Browser/MCP expose status and cached proposal previews; application uses the existing confirmation pipeline. External errors and credential-bearing request URLs never enter result envelopes. Non-secret configuration and fetched proposals are private vault files; OS tokens are outside backup and agent context.
+
+The revised [release scope](release-acceptance.json) closes roadmap 0–16 for the
+local application. Provider expansion is optional follow-up rather than a universal
+coverage gate. The household scenario calls the existing retirement method once
+with explicit pooled assumptions; personal ownership/tax contexts stay separate.
+Platform and accessibility claims remain bounded by actual release acceptance.

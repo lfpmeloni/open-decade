@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 2,
+  "batchId": "comparison-example",
+  "records": [
+    {
+      "id": "fee-example",
+      "kind": "fee-comparison",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "fee-example",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "currency": "EUR",
+      "annualUsage": "10000",
+      "referenceOfferId": "basic",
+      "product": "card",
+      "offers": [
+        {
+          "offerId": "basic",
+          "name": "Synthetic basic",
+          "sourceUrl": "https://example.com/synthetic-only",
+          "sourceDate": "2026-01-01",
+          "reviewDue": "2026-12-31",
+          "eligibility": "eligible",
+          "eligibilityNotes": "Synthetic illustration, not a real offer",
+          "annualFixedFee": "0",
+          "variableFeeRate": "0",
+          "rewardRate": "0.01",
+          "annualRewardCap": null,
+          "rewardValueConfirmed": true
+        },
+        {
+          "offerId": "paid",
+          "name": "Synthetic paid",
+          "sourceUrl": "https://example.com/synthetic-only",
+          "sourceDate": "2026-01-01",
+          "reviewDue": "2026-12-31",
+          "eligibility": "eligible",
+          "eligibilityNotes": "Synthetic illustration, not a real offer",
+          "annualFixedFee": "100",
+          "variableFeeRate": "0",
+          "rewardRate": "0.02",
+          "annualRewardCap": "300",
+          "rewardValueConfirmed": true
+        }
+      ]
+    },
+    {
+      "id": "fx-example",
+      "kind": "fx-comparison",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "fx-example",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "sourceCurrency": "EUR",
+      "destinationCurrency": "USD",
+      "amount": "1000",
+      "offers": [
+        {
+          "offerId": "route-a",
+          "name": "Synthetic route-a",
+          "sourceUrl": "https://example.com/synthetic-only",
+          "sourceDate": "2026-01-01",
+          "reviewDue": "2026-12-31",
+          "eligibility": "eligible",
+          "eligibilityNotes": "Synthetic illustration, not a real offer",
+          "fixedSourceFee": "5",
+          "sourceFeeRate": "0.01",
+          "destinationPerSource": "1.1"
+        },
+        {
+          "offerId": "route-b",
+          "name": "Synthetic route-b",
+          "sourceUrl": "https://example.com/synthetic-only",
+          "sourceDate": "2026-01-01",
+          "reviewDue": "2026-12-31",
+          "eligibility": "eligible",
+          "eligibilityNotes": "Synthetic illustration, not a real offer",
+          "fixedSourceFee": "0",
+          "sourceFeeRate": "0",
+          "destinationPerSource": "1.08"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 2,
+  "batchId": "life-planning-example",
+  "records": [
+    {
+      "id": "retirement-example",
+      "kind": "retirement-scenario",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "retirement-example",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "currency": "EUR",
+      "startMonth": "2026-01-01",
+      "months": 4,
+      "initial": "100",
+      "monthlyIncome": "100",
+      "monthlySpending": "50",
+      "monthlyPension": "20",
+      "retireAfterMonths": 2,
+      "annualReturn": "0",
+      "annualInflation": "0",
+      "annualIncomeGrowth": "0",
+      "annualPensionGrowth": "0",
+      "returnsNetOfFees": true,
+      "expenseIds": [],
+      "variants": [
+        {
+          "label": "Earlier retirement",
+          "retireAfterMonths": 0
+        },
+        {
+          "label": "Lower income",
+          "monthlyIncome": "50"
+        },
+        {
+          "label": "Inflation sensitivity",
+          "annualInflation": "0.1"
+        },
+        {
+          "label": "Return sensitivity",
+          "annualReturn": "-0.1"
+        }
+      ]
+    },
+    {
+      "id": "housing-example",
+      "kind": "housing-scenario",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "housing-example",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "currency": "EUR",
+      "startMonth": "2026-01-01",
+      "months": 12,
+      "initial": "0",
+      "price": "1200",
+      "downPayment": "0",
+      "purchaseCosts": "0",
+      "sellingFee": "0",
+      "mortgageAnnualRate": "0",
+      "mortgageMonths": 12,
+      "monthlyBudget": "100",
+      "monthlyRent": "80",
+      "monthlyOwnerCosts": "0",
+      "annualReturn": "0",
+      "annualInflation": "0",
+      "annualHouseGrowth": "0",
+      "annualRentGrowth": "0",
+      "returnsNetOfFees": true,
+      "variants": [
+        {
+          "label": "Lower budget",
+          "monthlyBudget": "50"
+        },
+        {
+          "label": "Longer mortgage",
+          "mortgageMonths": 24
+        },
+        {
+          "label": "House value sensitivity",
+          "annualHouseGrowth": "-0.1"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "version": "1.0.0",
+  "jurisdiction": "IT",
+  "taxYear": 2025,
+  "reviewedAt": "2026-10-09",
+  "reviewDue": "2027-01-09",
+  "scope": "Document organization and conditional deadline references only; no tax liability, filing decision or submission.",
+  "name": "Italy",
+  "period": "2025 income, 2026 declaration models",
+  "sources": [
+    {
+      "id": "deadline",
+      "publisher": "Agenzia delle Entrate",
+      "url": "https://infoprecompilata.agenziaentrate.gov.it/portale/scadenze",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    },
+    {
+      "id": "documents",
+      "publisher": "Agenzia delle Entrate",
+      "url": "https://infoprecompilata.agenziaentrate.gov.it/portale/redditi-semplificata",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    }
+  ],
+  "deadlines": [
+    {
+      "date": "2026-09-30",
+      "label": "Precompiled 730 submission deadline",
+      "appliesWhen": "Applicable 730 precompiled procedure; eligibility and corrections require review.",
+      "sourceId": "deadline",
+      "applicability": "not-determined",
+      "timezone": "local-jurisdiction"
+    },
+    {
+      "date": "2026-11-02",
+      "label": "Precompiled Redditi submission deadline",
+      "appliesWhen": "Applicable Redditi precompiled procedure; confirm correct model and any special case.",
+      "sourceId": "deadline",
+      "applicability": "not-determined",
+      "timezone": "local-jurisdiction"
+    }
+  ],
+  "documents": {
+    "income": "Collect Certificazione Unica and bank/broker income/withholding statements.",
+    "disposals": "Collect financial disposal and acquisition records.",
+    "foreign-accounts": "Collect foreign account, investment and crypto statements for specialist review.",
+    "wrappers": "Collect pension and account-regime contracts and contribution evidence.",
+    "retirement": "Collect pension certificates and contributions."
+  },
+  "questions": [
+    "Ask which declaration model and reporting sections apply; no model is selected here.",
+    "Ask how the account tax regime affects missing records.",
+    "Foreign assets, treaty cases and corrections need individual review."
+  ]
+}

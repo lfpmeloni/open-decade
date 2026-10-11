@@ -7,14 +7,13 @@ and documented prerequisites.
 
 ## Working today
 
-The project is in documentation-only development. There are no install, build,
-lint, or test commands yet. Do not run invented npm scripts or claim runtime
-behavior has been validated. Review documentation for consistency, working local
-links, and an explicit distinction between planned and implemented behavior.
-
-When runtime code first lands, document its pinned Node version, lockfile,
-installation command, and actual checks here. That change must introduce the
-test entry point and CI rather than leaving these instructions aspirational.
+Use Node **24.20.0**, npm **11.19.0**, and `npm ci` with the committed lockfile.
+Runtime dependencies are pinned exactly. Run `npm test` for synthetic acceptance
+checks and `npm run check` for syntax, local documentation links, package contents,
+and a fresh public-only offline installation/CLI smoke test. After installation,
+checks need no network, private files, credentials, models or personal records.
+CI installs locked dependencies, then runs those offline checks with read-only
+repository permissions. No test may use the personal default vault.
 
 ## One workflow for an improvement
 
@@ -52,6 +51,44 @@ local development work. Follow the user's instructions for committing and
 publishing; do not repeatedly ask for authorization already given. If a remote
 or credentials are unavailable, leave a reviewable local result and state the
 blocker. Merge and release remain maintainer decisions.
+
+## Scope and protected contracts
+
+Tie each improvement to an accepted [roadmap follow-up](docs/roadmap.md#follow-up-selected-during-use),
+a concrete regression, or a [maintenance need](workflows/maintenance.md). For a new
+topic, open a scoped issue with the outcome and exclusions before implementation.
+The completed 0–16 roadmap is not an authorization to expand every capability.
+Fixes and compatible extensions may proceed through existing interfaces.
+
+Core contracts are deterministic decimal calculations, immutable provenance,
+proposal-bound confirmation, atomic writes, explicit migration, honest missing-data
+results, local security boundaries, and the exclusion of financial execution.
+Their owning definitions remain in [the architecture](docs/architecture.md),
+[contracts](docs/contracts.md), [methods](knowledge/methods.md), and
+[SECURITY.md](SECURITY.md). Obtain explicit maintainer agreement on scope and
+compatibility before changing those contracts. Include old-data and migration
+acceptance where applicable; an agreement does not waive regression checks.
+
+Keep the smallest coherent diff. A new abstraction or dependency must solve a
+current acceptance requirement; speculative frameworks, duplicated policy, and
+unrelated cleanup do not belong in the improvement. Reviewers check scope and
+simplicity against the issue and acceptance example rather than an automated
+classifier. An uncovered larger gap becomes a separate scoped task.
+
+## AI-assisted development
+
+People and agents follow the same contribution process. Inspect implemented
+behavior and authoritative instructions before proposing changes. Define
+observable acceptance criteria first; for a bug, reproduce it with synthetic
+input and a failing regression test before fixing it. Check financial examples
+independently rather than deriving expected values from the implementation.
+
+Use existing boundaries, review the complete diff, and retain regression coverage.
+Do not remove tests, loosen assertions, or change expected results simply to make
+checks pass. An intentional behavior change needs an explained, approved contract
+change. The contributor remains responsible for understanding and validating
+AI-generated code; a passing check or AI review does not replace maintainer review.
+No paid model, mandatory AI reviewer, or generated-code framework is required.
 
 ## Requirements by change type
 
@@ -95,7 +132,8 @@ the parser against that fixture, not the continuing availability of a live sourc
 
 ## Issues and pull requests
 
-An issue should describe the requested outcome and a synthetic example. A PR
+An issue should describe the requested outcome, scope exclusions, and a synthetic example.
+A PR identifies its accepted roadmap follow-up, maintenance need, or scoped issue. A PR
 should explain the concrete problem and resulting behavior. Use this outline
 when it helps; omit sections that are irrelevant to a small change:
 
@@ -132,3 +170,71 @@ gitignore alone does not determine what a packager or archive includes.
 Preserve local changes during upgrades; never reset a user's checkout to force an
 update. Schema changes require explicit migration with a verified backup and a
 tested restore path. Rolling back code does not roll back data automatically.
+
+## Browser acceptance
+
+For browser changes, install Chromium once with `npx playwright install chromium`
+(or `--with-deps` on a fresh Linux runner), then run `npm run test:browser`. The test
+uses a synthetic external vault and verifies initialization, unresolved import,
+correction, masking, keyboard navigation and report export parity. Browser binaries
+are setup prerequisites; the acceptance flow itself uses no external network.
+`npm run check` builds the React/Vite bundle and rebuilds it in the public-only
+installation. Bundle outputs are generated and included in package inspection.
+
+After changing capability status, run `npm run docs`; the package check rejects an
+outdated generated listing. Synthetic planning examples also run through a clean
+public installation, including schema-2 creation, spending, tax routing, saved
+reviews and spreadsheet export. Provider-response fixtures are not evidence of
+live coverage. Export reader interoperability was checked separately with pypdf and
+openpyxl; those optional verification tools are not installation prerequisites.
+
+Use [the local maintenance queue](workflows/maintenance.md) to inspect public source
+review dates and synthetic import-format checkpoints. It does not contact providers
+or certify live formats. Platform release gates require actual per-platform results;
+local passing tests do not close unexecuted Windows/macOS gates.
+
+## Final release check
+
+The full gate is required before release, rather than as a new requirement for
+every PR. Existing PR CI remains in place; contributors run the relevant checks
+and browser acceptance when their changes affect the UI or service boundary.
+Install the pinned dependencies and Chromium as described above, then run:
+
+```bash
+npm run check:release
+```
+
+This command first runs the existing package/build/install checks, then the full
+Node integration/regression suite and Chromium acceptance from that verified
+public-only installation. Rebuilding must reproduce the packaged browser bundle.
+Tests use external temporary synthetic vaults; acceptance needs no network,
+provider credentials, private records, or model subscription. Temporary package
+installations and vaults are removed after the run.
+
+`release-results/summary.json` records source commit/dirty status, artifact SHA-256,
+Node/npm/Chromium versions, stage results, cleanup, and evidence locations. The tested
+archive (`package.tgz`), file manifest, logs, HTML reports, attached screenshots,
+and failure traces remain in `release-results/`.
+Ordinary browser runs write their reports to `test-results/browser/`. Generated
+outputs are ignored and excluded from the public package. Traces may contain the
+short-lived synthetic service session; the service is stopped before review or
+artifact upload. Never run this suite against a personal vault.
+
+A failed prerequisite, failed/incomplete test summary, skipped test, focused test,
+or unexpected browser error prevents acceptance. Retries are disabled. Negative
+scenarios explicitly assert their expected errors, unchanged committed state,
+and recovery; they are not blanket error exemptions. Missing coverage remains
+visible, and each report selector has an explicit expected result. Browser
+acceptance retains the bounded accessibility and platform scope in
+[release acceptance](docs/release-acceptance.json); it does not certify live providers.
+
+A dirty checkout may finish diagnostic checks, but returns nonzero and cannot be
+release-ready. Commit only the intended, reviewed work when authorized, then rerun
+on the unchanged clean source. The manually triggered Final release acceptance CI
+job runs the same command with read-only permissions and retains evidence for 14
+days. It does not tag, publish, or alter capability status.
+
+Before a maintainer approves release, inspect the populated-screen screenshots,
+narrow-screen views, package contents and outgoing diff/history; record the actual
+result in the release acceptance record. Automated passing results are necessary
+but do not replace this review. Any source change requires a new gate run.

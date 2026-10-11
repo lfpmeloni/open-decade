@@ -1,0 +1,4323 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-decade.local/schemas/batch-v2.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "batchId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10000,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "account"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "ownership": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "coverage": {
+                "enum": [
+                  "aggregate",
+                  "holdings",
+                  "unresolved"
+                ]
+              },
+              "institutionId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "wrapper": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "currency",
+              "ownership",
+              "coverage"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "position"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "ownership": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "accountId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "instrumentId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "issuer": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "country": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "sector": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "assetClass": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "economicCurrency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "instrumentType": {
+                "enum": [
+                  "cash",
+                  "equity",
+                  "fund",
+                  "bond",
+                  "property",
+                  "other",
+                  "unknown"
+                ]
+              },
+              "identifiers": {
+                "type": "array",
+                "maxItems": 20,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "scheme": {
+                      "enum": [
+                        "ISIN",
+                        "CUSIP",
+                        "SEDOL",
+                        "ticker",
+                        "provider",
+                        "other"
+                      ]
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "market": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "required": [
+                    "scheme",
+                    "value"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "currency",
+              "ownership"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "liability"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "responsibility": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualRate": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "monthlyPayment": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "currency",
+              "responsibility"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "observation"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "entityId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "value": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "quantity": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "unitPrice": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "acquisitionCost": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "entityId",
+              "currency",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "transaction"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "accountId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "amount": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "classification": {
+                "enum": [
+                  "income",
+                  "spending",
+                  "interest",
+                  "principal",
+                  "transfer",
+                  "investment",
+                  "unknown"
+                ]
+              },
+              "transferId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "liabilityId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "liabilityDelta": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "positionId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "positionDelta": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "externalFlow": {
+                "type": "boolean"
+              },
+              "valueBefore": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "valueAfter": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "settlementDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "eventType": {
+                "enum": [
+                  "trade",
+                  "dividend",
+                  "fee",
+                  "interest",
+                  "other"
+                ]
+              },
+              "categorySplits": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 100,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "categoryId": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                    },
+                    "amount": {
+                      "type": "string",
+                      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    }
+                  },
+                  "required": [
+                    "categoryId",
+                    "amount"
+                  ]
+                }
+              },
+              "refundOf": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "exceptional": {
+                "type": "boolean"
+              },
+              "recurringId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "accountId",
+              "currency",
+              "amount",
+              "classification"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "goal"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "target": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "targetDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "entityIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                },
+                "uniqueItems": true
+              },
+              "allocations": {
+                "type": "array",
+                "maxItems": 500,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "entityId": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                    },
+                    "share": {
+                      "type": "string",
+                      "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$",
+                      "maxLength": 80
+                    }
+                  },
+                  "required": [
+                    "entityId",
+                    "share"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "currency",
+              "target",
+              "targetDate",
+              "entityIds"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "fx"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "from": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "to": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "rate": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "from",
+              "to",
+              "rate"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "fund"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "instrumentId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "shareClass": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "holdings": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "instrumentId": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                    },
+                    "weight": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "issuer": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "country": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "sector": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "assetClass": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "economicCurrency": {
+                      "type": "string",
+                      "pattern": "^[A-Z]{3}$"
+                    }
+                  },
+                  "required": [
+                    "instrumentId",
+                    "weight"
+                  ]
+                }
+              },
+              "ongoingCharge": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "otherCharges": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "amount": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "currency": {
+                      "type": "string",
+                      "pattern": "^[A-Z]{3}$"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "amount",
+                    "currency"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "instrumentId",
+              "shareClass",
+              "holdings"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "history"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "accountId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "from": {
+                "type": "string",
+                "format": "date"
+              },
+              "through": {
+                "type": "string",
+                "format": "date"
+              },
+              "complete": {
+                "type": "boolean"
+              },
+              "externalFlowsComplete": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "accountId",
+              "from",
+              "through",
+              "complete",
+              "externalFlowsComplete"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "assumptions"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "goalId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "initial": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "monthlyContribution": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "months": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1200
+              },
+              "annualReturn": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualVolatility": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualInflation": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "target": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "seed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "paths": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100000
+              },
+              "returnsNetOfFees": {
+                "const": true
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "currency",
+              "initial",
+              "monthlyContribution",
+              "months",
+              "annualReturn",
+              "annualVolatility",
+              "annualInflation",
+              "target",
+              "returnsNetOfFees"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "institution"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "country": {
+                "type": "string",
+                "pattern": "^[A-Z]{2}$"
+              },
+              "identifiers": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                }
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "profile"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "residences": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{2}$"
+                }
+              },
+              "baseCurrency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "householdRole": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "riskTolerance": {
+                "enum": [
+                  "low",
+                  "medium",
+                  "high",
+                  "unknown"
+                ]
+              },
+              "riskCapacity": {
+                "enum": [
+                  "low",
+                  "medium",
+                  "high",
+                  "unknown"
+                ]
+              },
+              "notes": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "residences"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "trade"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "accountId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "positionId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "side": {
+                "enum": [
+                  "buy",
+                  "sell"
+                ]
+              },
+              "quantity": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "unitPrice": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "fees": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "settlementDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "transactionId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "accountId",
+              "positionId",
+              "side",
+              "quantity",
+              "unitPrice",
+              "currency"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "corporate-action"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "positionId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "action": {
+                "enum": [
+                  "split",
+                  "merger",
+                  "spinoff",
+                  "return-of-capital",
+                  "other",
+                  "unknown"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "quantityBefore": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "quantityAfter": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "relatedPositionId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "positionId",
+              "action",
+              "description"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "category"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "nature": {
+                "enum": [
+                  "essential",
+                  "discretionary",
+                  "unknown"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "nature"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "classification-rule"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "accountId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "contains": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "categoryId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "classification": {
+                "enum": [
+                  "spending",
+                  "income"
+                ]
+              },
+              "enabled": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "contains",
+              "categoryId",
+              "classification",
+              "enabled"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "budget"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "categoryId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "amount": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "from": {
+                "type": "string",
+                "format": "date"
+              },
+              "through": {
+                "type": "string",
+                "format": "date"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "categoryId",
+              "currency",
+              "amount",
+              "from",
+              "through"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "recurring-payment"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "accountId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "categoryId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "amount": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "nextDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "intervalMonths": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 12
+              },
+              "active": {
+                "type": "boolean"
+              },
+              "subscription": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "accountId",
+              "currency",
+              "amount",
+              "nextDate",
+              "intervalMonths",
+              "active",
+              "subscription"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "investment-policy"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "reserveMonths": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "maxInstitutionWeight": {
+                "type": "string",
+                "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$"
+              },
+              "maxIssuerWeight": {
+                "type": "string",
+                "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$"
+              },
+              "liquidEntityIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                }
+              },
+              "assetBands": {
+                "type": "array",
+                "maxItems": 30,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "assetClass": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "minimum": {
+                      "type": "string",
+                      "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$"
+                    },
+                    "maximum": {
+                      "type": "string",
+                      "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$"
+                    }
+                  },
+                  "required": [
+                    "assetClass",
+                    "minimum",
+                    "maximum"
+                  ]
+                }
+              },
+              "reviewDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "currency",
+              "reserveMonths",
+              "maxInstitutionWeight",
+              "maxIssuerWeight",
+              "liquidEntityIds",
+              "assetBands",
+              "reviewDate",
+              "rationale"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "planned-expense"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "amount": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "dueDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "essential": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "currency",
+              "amount",
+              "dueDate",
+              "essential"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "fee-scenario"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "initial": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualGrossReturn": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "currentAnnualFee": {
+                "type": "string",
+                "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$"
+              },
+              "alternativeAnnualFee": {
+                "type": "string",
+                "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$"
+              },
+              "years": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "currency",
+              "initial",
+              "annualGrossReturn",
+              "currentAnnualFee",
+              "alternativeAnnualFee",
+              "years"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "tax-context"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "jurisdiction": {
+                "enum": [
+                  "US",
+                  "DE",
+                  "GB",
+                  "FR",
+                  "ES",
+                  "IT",
+                  "NL"
+                ]
+              },
+              "taxYear": {
+                "type": "integer",
+                "minimum": 2000,
+                "maximum": 2100
+              },
+              "residence": {
+                "enum": [
+                  "resident",
+                  "nonresident",
+                  "part-year",
+                  "unknown"
+                ]
+              },
+              "investmentIncome": {
+                "enum": [
+                  "yes",
+                  "no",
+                  "unknown"
+                ]
+              },
+              "disposals": {
+                "enum": [
+                  "yes",
+                  "no",
+                  "unknown"
+                ]
+              },
+              "foreignAccounts": {
+                "enum": [
+                  "yes",
+                  "no",
+                  "unknown"
+                ]
+              },
+              "wrappers": {
+                "enum": [
+                  "yes",
+                  "no",
+                  "unknown"
+                ]
+              },
+              "retirementIncome": {
+                "enum": [
+                  "yes",
+                  "no",
+                  "unknown"
+                ]
+              },
+              "specialCases": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "business",
+                    "trust",
+                    "estate",
+                    "state-local",
+                    "treaty",
+                    "other"
+                  ]
+                }
+              },
+              "notes": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "memberId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "jurisdiction",
+              "taxYear",
+              "residence",
+              "investmentIncome",
+              "disposals",
+              "foreignAccounts",
+              "wrappers",
+              "retirementIncome",
+              "specialCases"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "document-reference"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "jurisdiction": {
+                "enum": [
+                  "US",
+                  "DE",
+                  "GB",
+                  "FR",
+                  "ES",
+                  "IT",
+                  "NL"
+                ]
+              },
+              "taxYear": {
+                "type": "integer",
+                "minimum": 2000,
+                "maximum": 2100
+              },
+              "documentType": {
+                "enum": [
+                  "income",
+                  "disposals",
+                  "foreign-accounts",
+                  "wrappers",
+                  "retirement",
+                  "identity",
+                  "other"
+                ]
+              },
+              "status": {
+                "enum": [
+                  "present",
+                  "requested",
+                  "missing"
+                ]
+              },
+              "reference": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "memberId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "jurisdiction",
+              "taxYear",
+              "documentType",
+              "status",
+              "reference"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "reminder"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "dueDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "enabled": {
+                "type": "boolean"
+              },
+              "completed": {
+                "type": "boolean"
+              },
+              "topic": {
+                "enum": [
+                  "subscription",
+                  "insurance",
+                  "beneficiary",
+                  "review",
+                  "tax",
+                  "other"
+                ]
+              },
+              "documentIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                }
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "title",
+              "dueDate",
+              "enabled",
+              "completed",
+              "topic",
+              "documentIds"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "retirement-scenario"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "startMonth": {
+                "type": "string",
+                "format": "date"
+              },
+              "months": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1200
+              },
+              "initial": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "monthlyIncome": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "monthlySpending": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "monthlyPension": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "retireAfterMonths": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1200
+              },
+              "annualReturn": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualInflation": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualIncomeGrowth": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualPensionGrowth": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "returnsNetOfFees": {
+                "const": true
+              },
+              "expenseIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "maxItems": 200,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                }
+              },
+              "variants": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 8,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100
+                    },
+                    "annualReturn": {
+                      "type": "string",
+                      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "annualInflation": {
+                      "type": "string",
+                      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "monthlyIncome": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "monthlySpending": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "monthlyPension": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "retireAfterMonths": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1200
+                    }
+                  },
+                  "required": [
+                    "label"
+                  ],
+                  "minProperties": 2
+                }
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "currency",
+              "startMonth",
+              "months",
+              "initial",
+              "monthlyIncome",
+              "monthlySpending",
+              "monthlyPension",
+              "retireAfterMonths",
+              "annualReturn",
+              "annualInflation",
+              "annualIncomeGrowth",
+              "annualPensionGrowth",
+              "returnsNetOfFees",
+              "expenseIds",
+              "variants"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "housing-scenario"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "startMonth": {
+                "type": "string",
+                "format": "date"
+              },
+              "months": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1200
+              },
+              "initial": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "price": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "downPayment": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "purchaseCosts": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "sellingFee": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "mortgageAnnualRate": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "mortgageMonths": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 600
+              },
+              "monthlyBudget": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "monthlyRent": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "monthlyOwnerCosts": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualReturn": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualInflation": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualHouseGrowth": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualRentGrowth": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "returnsNetOfFees": {
+                "const": true
+              },
+              "variants": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 8,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100
+                    },
+                    "annualReturn": {
+                      "type": "string",
+                      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "annualInflation": {
+                      "type": "string",
+                      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "annualHouseGrowth": {
+                      "type": "string",
+                      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "annualRentGrowth": {
+                      "type": "string",
+                      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "mortgageAnnualRate": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "monthlyBudget": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "monthlyRent": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "mortgageMonths": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 600
+                    }
+                  },
+                  "required": [
+                    "label"
+                  ],
+                  "minProperties": 2
+                }
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "currency",
+              "startMonth",
+              "months",
+              "initial",
+              "price",
+              "downPayment",
+              "purchaseCosts",
+              "sellingFee",
+              "mortgageAnnualRate",
+              "mortgageMonths",
+              "monthlyBudget",
+              "monthlyRent",
+              "monthlyOwnerCosts",
+              "annualReturn",
+              "annualInflation",
+              "annualHouseGrowth",
+              "annualRentGrowth",
+              "returnsNetOfFees",
+              "variants"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "allocation-plan"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "policyId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "entityIds": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 500,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                }
+              },
+              "contribution": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "contributionSource": {
+                "const": "external-unallocated"
+              },
+              "monthlyEssentialSpending": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "needsReviewed": {
+                "const": true
+              },
+              "mode": {
+                "enum": [
+                  "contribution",
+                  "rebalance"
+                ]
+              },
+              "targets": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 30,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "assetClass": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "weight": {
+                      "type": "string",
+                      "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$"
+                    }
+                  },
+                  "required": [
+                    "assetClass",
+                    "weight"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "policyId",
+              "currency",
+              "entityIds",
+              "contribution",
+              "contributionSource",
+              "monthlyEssentialSpending",
+              "needsReviewed",
+              "mode",
+              "targets"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "household-member"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "participating": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "participating"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "household-plan"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "memberIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "minItems": 1,
+                "maxItems": 20,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                }
+              },
+              "allocations": {
+                "type": "array",
+                "maxItems": 500,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "entityId": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                    },
+                    "members": {
+                      "type": "array",
+                      "minItems": 1,
+                      "maxItems": 20,
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "memberId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                          },
+                          "share": {
+                            "type": "string",
+                            "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$",
+                            "maxLength": 80
+                          }
+                        },
+                        "required": [
+                          "memberId",
+                          "share"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "entityId",
+                    "members"
+                  ]
+                }
+              },
+              "scenarioId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "memberIds",
+              "allocations"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "fee-comparison"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "annualUsage": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "referenceOfferId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "product": {
+                "enum": [
+                  "card",
+                  "bank",
+                  "broker"
+                ]
+              },
+              "offers": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 20,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "offerId": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "sourceUrl": {
+                      "type": "string",
+                      "pattern": "^https://[^\\s]+$",
+                      "maxLength": 2000
+                    },
+                    "sourceDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "reviewDue": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "eligibility": {
+                      "enum": [
+                        "eligible",
+                        "ineligible",
+                        "unknown"
+                      ]
+                    },
+                    "eligibilityNotes": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    },
+                    "annualFixedFee": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "variableFeeRate": {
+                      "type": "string",
+                      "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$",
+                      "maxLength": 80
+                    },
+                    "rewardRate": {
+                      "type": "string",
+                      "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$",
+                      "maxLength": 80
+                    },
+                    "annualRewardCap": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                          "maxLength": 80
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "rewardValueConfirmed": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "offerId",
+                    "name",
+                    "sourceUrl",
+                    "sourceDate",
+                    "reviewDue",
+                    "eligibility",
+                    "eligibilityNotes",
+                    "annualFixedFee",
+                    "variableFeeRate",
+                    "rewardRate",
+                    "annualRewardCap",
+                    "rewardValueConfirmed"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "currency",
+              "annualUsage",
+              "referenceOfferId",
+              "product",
+              "offers"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "fx-comparison"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  },
+                  "rawReference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "sourceCurrency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "destinationCurrency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "amount": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "offers": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 20,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "offerId": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "sourceUrl": {
+                      "type": "string",
+                      "pattern": "^https://[^\\s]+$",
+                      "maxLength": 2000
+                    },
+                    "sourceDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "reviewDue": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "eligibility": {
+                      "enum": [
+                        "eligible",
+                        "ineligible",
+                        "unknown"
+                      ]
+                    },
+                    "eligibilityNotes": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    },
+                    "fixedSourceFee": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "sourceFeeRate": {
+                      "type": "string",
+                      "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$",
+                      "maxLength": 80
+                    },
+                    "destinationPerSource": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    }
+                  },
+                  "required": [
+                    "offerId",
+                    "name",
+                    "sourceUrl",
+                    "sourceDate",
+                    "reviewDue",
+                    "eligibility",
+                    "eligibilityNotes",
+                    "fixedSourceFee",
+                    "sourceFeeRate",
+                    "destinationPerSource"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "sourceCurrency",
+              "destinationCurrency",
+              "amount",
+              "offers"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "batchId",
+    "records"
+  ]
+}

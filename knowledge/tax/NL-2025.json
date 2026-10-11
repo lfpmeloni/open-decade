@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "jurisdiction": "NL",
+  "taxYear": 2025,
+  "reviewedAt": "2026-10-09",
+  "reviewDue": "2027-01-09",
+  "scope": "Document organization and conditional deadline references only; no tax liability, filing decision or submission.",
+  "name": "Netherlands",
+  "period": "2025 calendar year",
+  "sources": [
+    {
+      "id": "deadline",
+      "publisher": "Belastingdienst",
+      "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/kan-ik-nog-uitstel-aanvragen-belastingaangifte",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    },
+    {
+      "id": "documents",
+      "publisher": "Belastingdienst",
+      "url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/welke_gegevens_heb_ik_nodig_voor_mijn_belastingaangifte",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    }
+  ],
+  "deadlines": [
+    {
+      "date": "2026-05-01",
+      "label": "Standard invitation deadline reference",
+      "appliesWhen": "Check the actual invitation: it may specify another date, and extensions/adviser arrangements differ.",
+      "sourceId": "deadline",
+      "applicability": "not-determined",
+      "timezone": "local-jurisdiction"
+    }
+  ],
+  "documents": {
+    "income": "Collect 2025 jaaropgaven, dividend and bank/investment annual statements.",
+    "disposals": "Collect transaction and actual-return evidence for preparer review.",
+    "foreign-accounts": "Collect Dutch and foreign account statements and migration/residence evidence.",
+    "wrappers": "Collect annuity, pension and special-account contribution records.",
+    "retirement": "Collect pension income and lijfrente contribution evidence."
+  },
+  "questions": [
+    "Check the invitation and residence/migration facts before using any deadline.",
+    "Ask what evidence is needed for box 3 and any actual-return procedure; no box 3 calculation is generated.",
+    "Fiscal-partner, business and cross-border cases require separate applicability review."
+  ]
+}

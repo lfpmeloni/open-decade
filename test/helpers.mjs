@@ -1,0 +1,10 @@
+import {replay} from '../src/validate.mjs';
+import {hash} from '../src/core.mjs';
+export const record=(kind,id,fields={})=>({id,kind,date:'2026-01-01',capturedAt:'2026-01-02T00:00:00Z',provenance:{source:'synthetic',sourceId:id,quality:'user-reported',uncertainties:[]},...fields});
+export const account=(id,fields={})=>record('account',id,{name:id,currency:'EUR',ownership:'1',coverage:'aggregate',...fields});
+export const observation=(id,entityId,value,fields={})=>record('observation',id,{entityId,currency:'EUR',value,...fields});
+export const tx=(id,accountId,amount,fields={})=>record('transaction',id,{accountId,currency:'EUR',amount,classification:'unknown',date:'2026-01-02',...fields});
+export const batch=(records,batchId='fixture')=>({schemaVersion:1,batchId,records});
+export const state=records=>{const batches=[batch(records)];return {...replay(batches),batches,state:hash(batches)};};
+export const assumptions=(fields={})=>record('assumptions','assumptions',{currency:'EUR',initial:'100',monthlyContribution:'10',months:12,annualReturn:'0',annualVolatility:'0',annualInflation:'0',target:'220',returnsNetOfFees:true,...fields});
+export const history=(id,accountId,fields={})=>record('history',id,{accountId,from:'2026-01-01',through:'2026-12-31',complete:true,externalFlowsComplete:true,...fields});

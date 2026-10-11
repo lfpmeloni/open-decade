@@ -1,0 +1,78 @@
+{
+  "release": "0.1.0-local",
+  "reviewedAt": "2026-10-11",
+  "roadmapStatus": "complete",
+  "scopeDecision": "Current 0–16 roadmap closed under the user-approved bounded local release scope. Provider expansion and other environments are follow-up work chosen during use.",
+  "platforms": [
+    {
+      "platform": "WSL2/Linux runtime",
+      "status": "supported",
+      "required": [
+        "installation",
+        "migration",
+        "restore",
+        "imports",
+        "reports",
+        "stdio protocol integration"
+      ],
+      "evidence": [
+        "npm test",
+        "npm run check",
+        "npm run test:browser"
+      ],
+      "environment": "Node 24.20.0, npm 11.19.0, Linux under WSL2, Chromium"
+    },
+    {
+      "platform": "Native Linux desktop",
+      "status": "outside-release-scope",
+      "evidence": "Compatible design and Ubuntu CI configuration; separate native execution not certified."
+    },
+    {
+      "platform": "Windows native",
+      "status": "outside-release-scope",
+      "evidence": "Use the supported WSL2 workflow."
+    },
+    {
+      "platform": "macOS",
+      "status": "outside-release-scope",
+      "evidence": "Separate native execution not certified."
+    }
+  ],
+  "accessibility": {
+    "status": "complete-for-release-scope",
+    "acceptance": "test/browser/application.spec.mjs",
+    "coverage": [
+      "keyboard and skip navigation",
+      "landmarks and labelled controls",
+      "page focus and visible focus indicators",
+      "live status and error alerts",
+      "normal text contrast",
+      "320 CSS-pixel reflow and large-text layout",
+      "masking and equivalent tabular values",
+      "reduced motion"
+    ],
+    "limits": "Bounded Chromium accessibility baseline; no claim of full WCAG conformance or certification of individual screen readers."
+  },
+  "agentIntegration": {
+    "status": "complete-for-release-scope",
+    "acceptance": "test/interfaces.test.mjs",
+    "coverage": "Stdio subprocess, initialization, bounded tools, preview/apply and report parity. Host-specific configuration remains user-selected."
+  },
+  "providers": {
+    "status": "complete-for-release-scope",
+    "coverage": "File-first adapter framework, mapped/lossless CSV, documented OFX/Wise subsets, host extraction fallback and optional cached acquisition boundaries.",
+    "followUp": "Additional institutions, formats, pricing/disclosure feeds and production connections are selected during use; no untested provider is advertised."
+  },
+  "finalCheck": {
+    "command": "npm run check:release",
+    "implementation": "scripts/release-check.mjs",
+    "acceptance": [
+      "test/release-check.test.mjs",
+      "test/browser/application.spec.mjs",
+      "test/browser/release.spec.mjs"
+    ],
+    "qualification": "Passing package, Node and Chromium stages on unchanged clean source; maintainer visual/artifact review remains required.",
+    "evidence": "Generated release-results/summary.json and browser HTML report; retained outside the public package.",
+    "limits": "Development checks on dirty source do not qualify a release. Existing platform and provider limits remain unchanged."
+  }
+}

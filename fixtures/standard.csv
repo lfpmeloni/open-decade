@@ -1,0 +1,2 @@
+schemaVersion,batchId,kind,record
+1,csv-example,account,"{""id"":""csv-account"",""kind"":""account"",""date"":""2026-01-01"",""capturedAt"":""2026-01-02T00:00:00Z"",""provenance"":{""source"":""synthetic"",""sourceId"":""csv-account"",""quality"":""user-reported"",""uncertainties"":[]},""name"":""csv-account"",""currency"":""EUR"",""ownership"":""1"",""coverage"":""aggregate""}"

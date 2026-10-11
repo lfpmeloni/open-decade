@@ -10,45 +10,58 @@ to Decade or any other financial company.
 
 ## Current status
 
-**Documentation only. No financial capabilities are implemented yet.** There is
-no installable release, CLI, data schema, test suite, or validated agent
-integration. Commands described in the architecture are planned interfaces,
-not instructions you can run today.
+The offline CLI is implemented locally for schema versions 1 and 2. It uses confirmed,
+user-supplied records. Normal reports run offline; optional ECB reference FX requires
+an explicit fetch and confirmation. Installed
+availability is owned by the [capability registry](src/capabilities.mjs):
 
-| Capability | Status |
-|---|---|
-| Architecture, agent instructions, and contribution workflow | Available as documentation |
-| Manual entry and standard CSV import | Planned for the first usable release |
-| Accounts, assets, liabilities, cashflow, goals, and exports | Planned for the first usable release |
-| Bank-specific imports, ETF analytics, and simulations | Deferred; added through focused contributions |
-| Live bank connections, historical performance, regional tax calculations, and scheduled monitoring | Deferred; not currently supported |
-| Trading, money transfers, custody, and transaction authority | Outside the product scope |
+```bash
+node bin/od.mjs capabilities --json
+```
 
-This section owns current availability until the capability registry exists.
-When it ships, show availability from that registry rather than maintaining a
-second hand-written feature list.
+This is version 0.1.0 development software, not a published release. Verified production connections, built-in OCR, tax calculations, trading and money
+transfers are unavailable. An [experimental IBKR Flex reporting path](workflows/connections.md)
+has credential-free protocol tests; real consent/sync/revocation remains unverified. Scoped 2025 tax document modules cover seven
+jurisdictions; they produce no filing decisions. The [development roadmap](docs/roadmap.md) describes rounds
+5–16; future work is not installed availability. [Verified recovery](workflows/recovery.md)
+provides backup, restore, and explicit migration to richer schema-2 records. See the registry's linked workflows and limitations.
 
-## Intended first use
+## First use
 
-The first release will support one person per vault, including ownership shares
-for jointly held assets. It will accept manual records and the project's
-documented CSV format. Arbitrary bank exports and PDFs require their own
-supported importers.
+Install Node **24.20.0** and npm **11.19.0**, then run `npm ci` from this checkout.
+Use an external vault and start with read-only diagnostics:
 
-Start with a question and the records needed to answer it. For example:
+```bash
+node bin/od.mjs doctor --json
+```
 
-- "Here are my accounts, savings, and mortgage. What is my recorded net worth?"
-- "Summarize these transactions for September and show what is unclassified."
-- "Which information is missing before you can assess progress toward my goal?"
+Follow the [local workflow](workflows/local-analysis.md) for explicit initialization,
+manual/CSV preview and confirmation, reports, simulations and exports. The same
+workflow explains agent-assisted extraction from text, screenshots and documents;
+interpretation depends on the host and requires confirmation. The runtime accepts
+normalized JSON, lossless standard CSV and [explicit column-mapped CSV](workflows/mapped-import.md).
+The [local browser](workflows/application.md) passes Chromium acceptance in WSL/Linux.
+The stdio MCP adapter passes subprocess/protocol acceptance; individual hosts use
+the documented configuration.
+The browser supports manual account, balance, transaction and goal entry with
+preview/confirmation; Records exposes schema-driven forms for advanced fields.
+A bounded [OFX/QFX bank adapter](workflows/ofx.md) is experimental. Named provider
+layouts are optional follow-up except the existing experimental [Wise COMPACT CSV profile](workflows/provider-imports.md). [Spending](workflows/spending.md),
+[policy reviews](workflows/policy-review.md), [goal allocations and drafts](workflows/allocation-plans.md), [retirement/housing scenarios](workflows/life-planning.md), [tax documents](workflows/tax.md),
+[local reviews and exports](workflows/reviews.md) and optional
+[reference FX](workflows/public-data.md) and [economic series](workflows/economic-data.md) have separate documented limits.
 
-These are planned acceptance examples, not capabilities available today. Partial
-data should produce a clearly labeled partial result. Complete transaction
-history, a risk questionnaire, and tax details will not be prerequisites for a
-simple balance summary.
+New browser vaults use schema 2. CLI initialization defaults to schema 1 for
+compatibility; use `init --schema 2` for a new schema-2 vault. Existing vaults
+require the explicit migration workflow.
 
-The initial scope is general analysis across currencies. Residence metadata is
-not a promise of tax support. Recording an asset does not imply that the project
-can price it, forecast its return, or recommend buying it.
+Personal reports use one person’s ownership and debt-responsibility shares.
+An opt-in [household picture](workflows/household.md) explicitly allocates
+gross asset/debt values to participating members; shared vaults have no per-member
+access controls. [Dated comparisons](workflows/comparisons.md) use supplied quotes. Useful partial results identify missing coverage. No market assumptions,
+fees, prices or returns are invented. Read [methods](knowledge/methods.md) before
+interpreting analytical results and [contracts](docs/contracts.md) when preparing
+records. Synthetic fixtures demonstrate the interfaces; they are not personal data.
 
 ## Principles
 
@@ -89,25 +102,36 @@ security boundaries.
 
 ## Help build it
 
-Clone the public documentation and source repository:
+Clone the public source repository:
 
 ```bash
 git clone https://github.com/lfpmeloni/open-decade.git
 ```
 
 To review or develop the project now, start with [CONTRIBUTING.md](CONTRIBUTING.md).
-An agent should read [AGENTS.md](AGENTS.md). This repository must contain every
+An agent should read [AGENTS.md](AGENTS.md). Before release, run
+`npm run check:release` and follow the [final release review](CONTRIBUTING.md#final-release-check). This repository must contain every
 script, runtime skill, and instruction needed for its advertised capabilities,
 using only the documented prerequisites.
 
 | Source | Owns |
 |---|---|
-| This README | Purpose, principles, user entry point, and current availability |
+| This README | Purpose, principles, user entry point, and installed capability entry point |
 | [AGENTS.md](AGENTS.md) | Short agent behavior and document routing |
-| [Architecture](docs/architecture.md) | Component boundaries, data lifecycle, and planned interfaces |
+| [Architecture](docs/architecture.md) | Component boundaries, data lifecycle, and interfaces |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Development, validation, commits, PRs, and maintenance |
 | [SECURITY.md](SECURITY.md) | Privacy, credentials, publication, backups, and vulnerability handling |
+| [Schema](schemas/batch-v1.json) and [contracts](docs/contracts.md) | Record shapes, invariants, CSV and result envelopes |
+| [Roadmap](docs/roadmap.md) | Completed release scope and optional follow-up |
+| [Schema 2](docs/schema-2.md) | Richer records and migration compatibility |
+| [Capability registry](src/capabilities.mjs) and [generated listing](docs/capabilities.md) | Installed command availability |
+| [Local workflow](workflows/local-analysis.md) | Intake, reports, agent extraction, exports and recovery |
+| [Knowledge index](knowledge/INDEX.md) | Progressive topic routing and dated public catalogue |
+| [Methods](knowledge/methods.md) | Formulas, sources, examples and analytical limitations |
 
-Schemas, a capability registry, and topic-specific methods will become the
-authoritative sources for their respective details when implemented. Link to
-those sources instead of copying their contents into every guide.
+Link to these owning sources instead of copying their contents into every guide.
+
+The [0–16 roadmap](docs/roadmap.md) is complete under the selected local release
+scope. Provider expansion is chosen during use. The [release acceptance record](docs/release-acceptance.json)
+identifies the tested WSL2/Linux runtime and bounded Chromium accessibility baseline.
+The [household showcase](workflows/household.md) uses one confirmed pooled scenario.

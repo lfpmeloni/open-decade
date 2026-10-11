@@ -1,0 +1,1190 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-decade.local/batch-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "batchId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10000,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "account"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "ownership": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "coverage": {
+                "enum": [
+                  "aggregate",
+                  "holdings",
+                  "unresolved"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "currency",
+              "ownership",
+              "coverage"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "position"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "ownership": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "accountId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "instrumentId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "issuer": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "country": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "sector": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "assetClass": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "economicCurrency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "currency",
+              "ownership"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "liability"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "responsibility": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "currency",
+              "responsibility"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "observation"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "entityId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "value": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "entityId",
+              "currency",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "transaction"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "accountId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "amount": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "classification": {
+                "enum": [
+                  "income",
+                  "spending",
+                  "interest",
+                  "principal",
+                  "transfer",
+                  "investment",
+                  "unknown"
+                ]
+              },
+              "transferId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "liabilityId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "liabilityDelta": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "positionId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "positionDelta": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "externalFlow": {
+                "type": "boolean"
+              },
+              "valueBefore": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "valueAfter": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "accountId",
+              "currency",
+              "amount",
+              "classification"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "goal"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "target": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "targetDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "entityIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "name",
+              "currency",
+              "target",
+              "targetDate",
+              "entityIds"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "fx"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "from": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "to": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "rate": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "from",
+              "to",
+              "rate"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "fund"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "instrumentId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "shareClass": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "holdings": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "instrumentId": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                    },
+                    "weight": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "issuer": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "country": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "sector": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "assetClass": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "economicCurrency": {
+                      "type": "string",
+                      "pattern": "^[A-Z]{3}$"
+                    }
+                  },
+                  "required": [
+                    "instrumentId",
+                    "weight"
+                  ]
+                }
+              },
+              "ongoingCharge": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "otherCharges": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "amount": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                      "maxLength": 80
+                    },
+                    "currency": {
+                      "type": "string",
+                      "pattern": "^[A-Z]{3}$"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "amount",
+                    "currency"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "instrumentId",
+              "shareClass",
+              "holdings"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "history"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "accountId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "from": {
+                "type": "string",
+                "format": "date"
+              },
+              "through": {
+                "type": "string",
+                "format": "date"
+              },
+              "complete": {
+                "type": "boolean"
+              },
+              "externalFlowsComplete": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "accountId",
+              "from",
+              "through",
+              "complete",
+              "externalFlowsComplete"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "kind": {
+                "const": "assumptions"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "capturedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "sourceId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quality": {
+                    "enum": [
+                      "user-reported",
+                      "source-reported",
+                      "estimated",
+                      "calculated"
+                    ]
+                  },
+                  "uncertainties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    }
+                  }
+                },
+                "required": [
+                  "source",
+                  "quality",
+                  "uncertainties"
+                ]
+              },
+              "supersedes": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "goalId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "initial": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "monthlyContribution": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "months": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1200
+              },
+              "annualReturn": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualVolatility": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "annualInflation": {
+                "type": "string",
+                "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "target": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+                "maxLength": 80
+              },
+              "seed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "paths": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100000
+              },
+              "returnsNetOfFees": {
+                "const": true
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "date",
+              "capturedAt",
+              "provenance",
+              "currency",
+              "initial",
+              "monthlyContribution",
+              "months",
+              "annualReturn",
+              "annualVolatility",
+              "annualInflation",
+              "target",
+              "returnsNetOfFees"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "batchId",
+    "records"
+  ]
+}

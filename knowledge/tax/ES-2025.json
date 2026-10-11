@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "jurisdiction": "ES",
+  "taxYear": 2025,
+  "reviewedAt": "2026-10-09",
+  "reviewDue": "2027-01-09",
+  "scope": "Document organization and conditional deadline references only; no tax liability, filing decision or submission.",
+  "name": "Spain",
+  "period": "2025 calendar year",
+  "sources": [
+    {
+      "id": "deadline",
+      "publisher": "Agencia Tributaria",
+      "url": "https://sede.agenciatributaria.gob.es/Sede/ayuda/calendario-contribuyente/calendario-contribuyente-2026/calendario-anual/abril/8-abril-hasta-30-junio.html",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    },
+    {
+      "id": "documents",
+      "publisher": "Agencia Tributaria",
+      "url": "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/guia-principales-novedades/gestion-impuesto.html",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    }
+  ],
+  "deadlines": [
+    {
+      "date": "2026-06-30",
+      "label": "Standard Renta 2025 online campaign end",
+      "appliesWhen": "General campaign deadline; direct-debit and other procedures have separate dates.",
+      "sourceId": "deadline",
+      "applicability": "not-determined",
+      "timezone": "local-jurisdiction"
+    }
+  ],
+  "documents": {
+    "income": "Collect income, dividend, interest and withholding certificates for review.",
+    "disposals": "Collect acquisition/disposal records and reported costs.",
+    "foreign-accounts": "Collect foreign account/asset records and ask about separate informational obligations.",
+    "wrappers": "Collect pension-plan and other account-type contribution/activity records.",
+    "retirement": "Collect pension-income and contribution certificates."
+  },
+  "questions": [
+    "Confirm residence and whether a regional/foral regime requires another module.",
+    "Ask whether foreign-asset information has a separate deadline.",
+    "This module does not decide whether a Renta or Patrimonio return is required."
+  ]
+}

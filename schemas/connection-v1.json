@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "provider": {
+      "const": "ibkr-flex"
+    },
+    "scope": {
+      "const": "cash-transactions-csv"
+    },
+    "consentConfirmed": {
+      "const": true
+    },
+    "queryId": {
+      "type": "string",
+      "pattern": "^[0-9]{1,20}$"
+    },
+    "periodDays": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 365
+    },
+    "expiresOn": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "remoteAccountColumn": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "remoteAccountId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "decimal": {
+          "enum": [
+            ".",
+            ","
+          ]
+        },
+        "group": {
+          "enum": [
+            "",
+            ",",
+            ".",
+            " "
+          ]
+        },
+        "delimiter": {
+          "enum": [
+            ",",
+            ";",
+            "\t"
+          ]
+        },
+        "dateFormat": {
+          "enum": [
+            "YYYY-MM-DD",
+            "DD/MM/YYYY",
+            "MM/DD/YYYY"
+          ]
+        },
+        "columns": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "date": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "amount": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "currency": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "required": [
+            "id",
+            "date",
+            "amount"
+          ]
+        },
+        "corrections": {
+          "type": "object",
+          "maxProperties": 10000,
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          }
+        }
+      },
+      "required": [
+        "accountId",
+        "dateFormat",
+        "decimal",
+        "columns"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "provider",
+    "scope",
+    "consentConfirmed",
+    "queryId",
+    "periodDays",
+    "expiresOn",
+    "remoteAccountColumn",
+    "remoteAccountId",
+    "mapping"
+  ]
+}

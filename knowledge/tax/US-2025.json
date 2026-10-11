@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "jurisdiction": "US",
+  "taxYear": 2025,
+  "reviewedAt": "2026-10-09",
+  "reviewDue": "2027-01-09",
+  "scope": "Document organization and conditional deadline references only; no tax liability, filing decision or submission.",
+  "name": "US federal",
+  "period": "2025 calendar year",
+  "sources": [
+    {
+      "id": "deadline",
+      "publisher": "IRS",
+      "url": "https://www.irs.gov/filing/individuals/when-to-file",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    },
+    {
+      "id": "documents",
+      "publisher": "IRS",
+      "url": "https://www.irs.gov/individuals/checklist-for-free-tax-return-preparation",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    }
+  ],
+  "deadlines": [
+    {
+      "date": "2026-04-15",
+      "label": "Standard calendar-year individual deadline",
+      "appliesWhen": "Calendar-year federal filing, without a special extension or relief; confirm applicability with a preparer.",
+      "sourceId": "deadline",
+      "applicability": "not-determined",
+      "timezone": "local-jurisdiction"
+    }
+  ],
+  "documents": {
+    "income": "Collect supplied Forms 1099-INT/1099-DIV and investment statements.",
+    "disposals": "Collect broker disposal statements and acquisition/correction records.",
+    "foreign-accounts": "Collect foreign-account statements and ask a preparer which separate federal reporting regimes apply.",
+    "wrappers": "Collect IRA and other account-type and contribution records.",
+    "retirement": "Collect supplied pension/distribution statements, including Form 1099-R where issued."
+  },
+  "questions": [
+    "Ask whether US citizenship, residency or other status creates obligations even when living elsewhere.",
+    "Ask about separate foreign-account reporting; this module does not decide form requirements.",
+    "State/local, treaty and disaster-extension cases need separate review."
+  ]
+}

@@ -1,0 +1,6 @@
+{
+ "version":1,"provider":"ibkr-flex","scope":"cash-transactions-csv","consentConfirmed":true,
+ "queryId":"12345","periodDays":31,"expiresOn":"2026-12-31",
+ "remoteAccountColumn":"Account","remoteAccountId":"SYNTHETIC-ACCOUNT",
+ "mapping":{"accountId":"a","currency":"EUR","dateFormat":"YYYY-MM-DD","decimal":".","columns":{"id":"ID","date":"Date","amount":"Amount","description":"Description"}}
+}

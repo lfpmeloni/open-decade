@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "jurisdiction": "DE",
+  "taxYear": 2025,
+  "reviewedAt": "2026-10-09",
+  "reviewDue": "2027-01-09",
+  "scope": "Document organization and conditional deadline references only; no tax liability, filing decision or submission.",
+  "name": "Germany",
+  "period": "2025 calendar year",
+  "sources": [
+    {
+      "id": "deadline",
+      "publisher": "ELSTER",
+      "url": "https://www.elster.de/elsterweb/helpGlobal?themaGlobal=help_est_ufa_10_2025",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    },
+    {
+      "id": "documents",
+      "publisher": "ELSTER",
+      "url": "https://www.elster.de/elsterweb/helpGlobal?themaGlobal=help_est_ufa_10_2025",
+      "reviewedAt": "2026-10-09",
+      "type": "primary-official"
+    }
+  ],
+  "deadlines": [
+    {
+      "date": "2026-07-31",
+      "label": "General 2025 income-tax return deadline",
+      "appliesWhen": "General unextended deadline; advised, agricultural, voluntary or specially extended cases need separate verification.",
+      "sourceId": "deadline",
+      "applicability": "not-determined",
+      "timezone": "local-jurisdiction"
+    }
+  ],
+  "documents": {
+    "income": "Collect annual Steuerbescheinigungen and bank/broker statements for KAP review.",
+    "disposals": "Collect disposal, acquisition, loss and corporate-action evidence.",
+    "foreign-accounts": "Collect foreign income and withholding statements; ask about applicable reporting.",
+    "wrappers": "Collect contract and contribution records for each account/retirement wrapper.",
+    "retirement": "Collect pension and retirement-contribution certificates for preparer review."
+  },
+  "questions": [
+    "Confirm resident, nonresident or part-year status.",
+    "Ask which capital-income information requires correction or supplementary documents.",
+    "Advised-return deadlines and cross-border pension/treaty treatment require separate review."
+  ]
+}

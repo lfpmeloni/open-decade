@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "source": "synthetic-bank-export",
+  "accountId": "cash",
+  "externalAccountId": "synthetic-account",
+  "datePolicy": "bank-date",
+  "capturedAt": "2026-02-01T00:00:00Z"
+}

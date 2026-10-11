@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 2,
+  "batchId": "household-example",
+  "records": [
+    {
+      "id": "alex",
+      "kind": "household-member",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "alex",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "alex",
+      "participating": true
+    },
+    {
+      "id": "sam",
+      "kind": "household-member",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "sam",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "sam",
+      "participating": true
+    },
+    {
+      "id": "household-cash",
+      "kind": "account",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "household-cash",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "household-cash",
+      "currency": "EUR",
+      "ownership": "0.25",
+      "coverage": "aggregate"
+    },
+    {
+      "id": "household-value",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "household-value",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "household-cash",
+      "currency": "EUR",
+      "value": "1000"
+    },
+    {
+      "id": "household-example",
+      "kind": "household-plan",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "household-example",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Synthetic household",
+      "memberIds": [
+        "alex",
+        "sam"
+      ],
+      "allocations": [
+        {
+          "entityId": "household-cash",
+          "members": [
+            {
+              "memberId": "alex",
+              "share": "0.25"
+            },
+            {
+              "memberId": "sam",
+              "share": "0.75"
+            }
+          ]
+        }
+      ],
+      "scenarioId": "household-retirement"
+    },
+    {
+      "id": "alex-de",
+      "kind": "tax-context",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "alex-de",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "memberId": "alex",
+      "jurisdiction": "DE",
+      "taxYear": 2025,
+      "residence": "resident",
+      "investmentIncome": "yes",
+      "disposals": "no",
+      "foreignAccounts": "no",
+      "wrappers": "no",
+      "retirementIncome": "no",
+      "specialCases": []
+    },
+    {
+      "id": "sam-de",
+      "kind": "tax-context",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "sam-de",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "memberId": "sam",
+      "jurisdiction": "DE",
+      "taxYear": 2025,
+      "residence": "resident",
+      "investmentIncome": "yes",
+      "disposals": "no",
+      "foreignAccounts": "no",
+      "wrappers": "no",
+      "retirementIncome": "no",
+      "specialCases": []
+    },
+    {
+      "id": "alex-document",
+      "kind": "document-reference",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "alex-document",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "memberId": "alex",
+      "name": "Synthetic alex statement",
+      "jurisdiction": "DE",
+      "taxYear": 2025,
+      "documentType": "income",
+      "status": "present",
+      "reference": "synthetic-alex"
+    },
+    {
+      "id": "sam-document",
+      "kind": "document-reference",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "sam-document",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "memberId": "sam",
+      "name": "Synthetic sam statement",
+      "jurisdiction": "DE",
+      "taxYear": 2025,
+      "documentType": "income",
+      "status": "present",
+      "reference": "synthetic-sam"
+    },
+    {
+      "id": "household-retirement",
+      "kind": "retirement-scenario",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "household-retirement",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "currency": "EUR",
+      "startMonth": "2026-01-01",
+      "months": 4,
+      "initial": "100",
+      "monthlyIncome": "100",
+      "monthlySpending": "50",
+      "monthlyPension": "20",
+      "retireAfterMonths": 2,
+      "annualReturn": "0",
+      "annualInflation": "0",
+      "annualIncomeGrowth": "0",
+      "annualPensionGrowth": "0",
+      "returnsNetOfFees": true,
+      "expenseIds": [],
+      "variants": [
+        {
+          "label": "Earlier retirement",
+          "retireAfterMonths": 0
+        },
+        {
+          "label": "Lower income",
+          "monthlyIncome": "50"
+        },
+        {
+          "label": "Inflation sensitivity",
+          "annualInflation": "0.1"
+        },
+        {
+          "label": "Return sensitivity",
+          "annualReturn": "-0.1"
+        }
+      ]
+    }
+  ]
+}

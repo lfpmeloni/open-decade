@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 2,
+  "batchId": "allocation-example",
+  "records": [
+    {
+      "id": "reserve-cash",
+      "kind": "account",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "reserve-cash",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "reserve-cash",
+      "currency": "EUR",
+      "ownership": "1",
+      "coverage": "aggregate"
+    },
+    {
+      "id": "reserve-value",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "reserve-value",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "reserve-cash",
+      "currency": "EUR",
+      "value": "1000"
+    },
+    {
+      "id": "equity",
+      "kind": "position",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "equity",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Synthetic equity",
+      "currency": "EUR",
+      "ownership": "1",
+      "assetClass": "equity"
+    },
+    {
+      "id": "equity-value",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "equity-value",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "equity",
+      "currency": "EUR",
+      "value": "800"
+    },
+    {
+      "id": "bonds",
+      "kind": "position",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "bonds",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Synthetic bonds",
+      "currency": "EUR",
+      "ownership": "1",
+      "assetClass": "bonds"
+    },
+    {
+      "id": "bonds-value",
+      "kind": "observation",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "bonds-value",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "entityId": "bonds",
+      "currency": "EUR",
+      "value": "200"
+    },
+    {
+      "id": "allocation-policy",
+      "kind": "investment-policy",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "allocation-policy",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "Illustrative preferences only",
+      "currency": "EUR",
+      "reserveMonths": "3",
+      "maxInstitutionWeight": "1",
+      "maxIssuerWeight": "1",
+      "liquidEntityIds": [
+        "reserve-cash"
+      ],
+      "assetBands": [
+        {
+          "assetClass": "equity",
+          "minimum": "0.4",
+          "maximum": "0.6"
+        },
+        {
+          "assetClass": "bonds",
+          "minimum": "0.4",
+          "maximum": "0.6"
+        }
+      ],
+      "reviewDate": "2027-01-01",
+      "rationale": "Synthetic example, not a recommended portfolio"
+    },
+    {
+      "id": "first",
+      "kind": "goal",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "first",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "first",
+      "currency": "EUR",
+      "target": "100",
+      "targetDate": "2027-01-01",
+      "entityIds": [
+        "equity"
+      ],
+      "allocations": [
+        {
+          "entityId": "equity",
+          "share": "0.1"
+        }
+      ]
+    },
+    {
+      "id": "second",
+      "kind": "goal",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "second",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "name": "second",
+      "currency": "EUR",
+      "target": "100",
+      "targetDate": "2027-01-01",
+      "entityIds": [
+        "equity"
+      ],
+      "allocations": [
+        {
+          "entityId": "equity",
+          "share": "0.15"
+        }
+      ]
+    },
+    {
+      "id": "allocation-example",
+      "kind": "allocation-plan",
+      "date": "2026-01-01",
+      "capturedAt": "2026-01-02T00:00:00Z",
+      "provenance": {
+        "source": "synthetic",
+        "sourceId": "allocation-example",
+        "quality": "user-reported",
+        "uncertainties": []
+      },
+      "policyId": "allocation-policy",
+      "currency": "EUR",
+      "entityIds": [
+        "equity",
+        "bonds"
+      ],
+      "contribution": "200",
+      "contributionSource": "external-unallocated",
+      "monthlyEssentialSpending": "100",
+      "needsReviewed": true,
+      "mode": "rebalance",
+      "targets": [
+        {
+          "assetClass": "equity",
+          "weight": "0.5"
+        },
+        {
+          "assetClass": "bonds",
+          "weight": "0.5"
+        }
+      ]
+    }
+  ]
+}

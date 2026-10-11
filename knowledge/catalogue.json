@@ -1,0 +1,238 @@
+{
+  "version": "1.1.0",
+  "entries": [
+    {
+      "id": "product",
+      "title": "Using and recovering local records",
+      "version": "1.1.0",
+      "path": "knowledge/product.md",
+      "kind": "guidance",
+      "jurisdictions": [
+        "global"
+      ],
+      "tags": [
+        "onboarding",
+        "import",
+        "backup",
+        "restore",
+        "correction",
+        "privacy"
+      ],
+      "reviewedAt": "2026-10-11",
+      "reviewDue": "2027-04-09",
+      "sources": [
+        {
+          "publisher": "Open-decade",
+          "type": "project-contract",
+          "path": "docs/contracts.md",
+          "reviewedAt": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "assets",
+      "title": "Asset evidence and instrument coverage",
+      "version": "1.0.0",
+      "path": "knowledge/assets.md",
+      "kind": "specification",
+      "jurisdictions": [
+        "global"
+      ],
+      "tags": [
+        "equity",
+        "bond",
+        "fund",
+        "gold",
+        "crypto",
+        "quantity",
+        "identifiers",
+        "fees"
+      ],
+      "reviewedAt": "2026-10-09",
+      "reviewDue": "2027-04-09",
+      "sources": [
+        {
+          "publisher": "Open-decade",
+          "type": "project-contract",
+          "path": "docs/roadmap.md",
+          "reviewedAt": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "methods",
+      "title": "Implemented calculations",
+      "version": "1.0.0",
+      "path": "knowledge/methods.md",
+      "kind": "method",
+      "jurisdictions": [
+        "global"
+      ],
+      "tags": [
+        "net worth",
+        "cashflow",
+        "costs",
+        "performance",
+        "simulation"
+      ],
+      "reviewedAt": "2026-10-09",
+      "reviewDue": "2027-04-09",
+      "sources": [
+        {
+          "publisher": "Open-decade",
+          "type": "project-contract",
+          "path": "docs/contracts.md",
+          "reviewedAt": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "planning",
+      "title": "Policy and goals",
+      "version": "1.1.0",
+      "path": "knowledge/planning.md",
+      "kind": "specification",
+      "jurisdictions": [
+        "global"
+      ],
+      "tags": [
+        "policy",
+        "reserve",
+        "risk",
+        "debt",
+        "liquidity",
+        "concentration",
+        "mortgage",
+        "retirement",
+        "goals"
+      ],
+      "reviewedAt": "2026-10-11",
+      "reviewDue": "2027-04-09",
+      "sources": [
+        {
+          "publisher": "Open-decade",
+          "type": "project-contract",
+          "path": "docs/roadmap.md",
+          "reviewedAt": "2026-10-09"
+        },
+        {
+          "publisher": "US Securities and Exchange Commission",
+          "type": "primary-education",
+          "url": "https://www.investor.gov/introduction-investing/getting-started/asset-allocation",
+          "jurisdiction": "US",
+          "reviewedAt": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "tax",
+      "title": "Tax module boundary",
+      "version": "1.0.0",
+      "path": "knowledge/tax.md",
+      "kind": "specification",
+      "jurisdictions": [
+        "US",
+        "DE",
+        "GB",
+        "FR",
+        "ES",
+        "IT",
+        "NL"
+      ],
+      "tags": [
+        "tax",
+        "residence",
+        "filing",
+        "documents",
+        "liability"
+      ],
+      "reviewedAt": "2026-10-09",
+      "reviewDue": "2027-01-09",
+      "sources": [
+        {
+          "publisher": "Open-decade",
+          "type": "project-contract",
+          "path": "docs/roadmap.md",
+          "reviewedAt": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "institutions",
+      "title": "Institution comparisons",
+      "version": "1.0.0",
+      "path": "knowledge/institutions.md",
+      "kind": "specification",
+      "jurisdictions": [
+        "global"
+      ],
+      "tags": [
+        "bank",
+        "broker",
+        "card",
+        "fees",
+        "fx",
+        "provider",
+        "subscription"
+      ],
+      "reviewedAt": "2026-10-09",
+      "reviewDue": "2027-01-09",
+      "sources": [
+        {
+          "publisher": "Open-decade",
+          "type": "project-contract",
+          "path": "docs/roadmap.md",
+          "reviewedAt": "2026-10-09"
+        },
+        {
+          "publisher": "Consumer Financial Protection Bureau",
+          "type": "primary-education",
+          "url": "https://www.consumerfinance.gov/consumer-tools/bank-accounts/",
+          "jurisdiction": "US",
+          "reviewedAt": "2026-10-09"
+        },
+        {
+          "publisher": "Wise",
+          "type": "provider-export-instructions",
+          "url": "https://wise.com/help/articles/2736049/how-do-i-download-a-statement",
+          "reviewedAt": "2026-10-09"
+        },
+        {
+          "publisher": "DEGIRO UK",
+          "type": "provider-export-instructions",
+          "url": "https://www.degiro.com/uk/helpdesk/tax/tax-treaties/which-reports-are-there-and-where-can-i-find-them",
+          "jurisdiction": "GB",
+          "reviewedAt": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "scenarios",
+      "title": "Scenario assumptions",
+      "version": "1.0.0",
+      "path": "knowledge/scenarios.md",
+      "kind": "guidance",
+      "jurisdictions": [
+        "global"
+      ],
+      "tags": [
+        "inflation",
+        "return",
+        "income",
+        "sensitivity",
+        "economic",
+        "scenario"
+      ],
+      "reviewedAt": "2026-10-09",
+      "reviewDue": "2027-04-09",
+      "sources": [
+        {
+          "publisher": "Open-decade",
+          "type": "project-contract",
+          "path": "docs/contracts.md",
+          "reviewedAt": "2026-10-09"
+        }
+      ]
+    }
+  ]
+}

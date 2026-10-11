@@ -17,3 +17,11 @@ dist/
 .cache/
 *.log
 .DS_Store
+
+# Rebuilt browser bundle.
+/web/
+
+/test-results/
+/playwright-report/
+
+/release-results/

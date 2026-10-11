@@ -1,0 +1,59 @@
+{
+  "name": "open-decade",
+  "version": "0.1.0",
+  "description": "Offline, reproducible personal finance analysis",
+  "license": "Apache-2.0",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": "24.20.0",
+    "npm": "11.19.0"
+  },
+  "packageManager": "npm@11.19.0",
+  "bin": {
+    "od": "bin/od.mjs",
+    "od-web": "bin/od-web.mjs",
+    "od-mcp": "bin/od-mcp.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "schemas",
+    "fixtures",
+    "workflows",
+    "knowledge",
+    "docs",
+    "README.md",
+    "AGENTS.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "scripts",
+    "test",
+    ".nvmrc",
+    "ui",
+    "web"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "check:release": "node scripts/release-check.mjs",
+    "build": "vite build ui --outDir ../web --emptyOutDir",
+    "start": "node bin/od-web.mjs",
+    "test:browser": "npm run build && playwright test --config test/browser/playwright.config.mjs",
+    "docs": "node scripts/capabilities.mjs"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "csv-parse": "7.0.3",
+    "decimal.js": "10.6.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "yaml": "2.9.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "vite": "8.3.4"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "source": "synthetic-example",
+  "accountId": "cash",
+  "currency": "EUR",
+  "dateFormat": "DD/MM/YYYY",
+  "decimal": ",",
+  "group": ".",
+  "delimiter": ";",
+  "capturedAt": "2026-01-04T00:00:00Z",
+  "columns": {"id": "ID", "date": "Date", "amount": "Amount", "description": "Text"}
+}
