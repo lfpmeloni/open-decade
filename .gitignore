@@ -1,27 +1,10 @@
-# Local-only workspace.
+# Personal data never leaves your machine through git.
+/data/
+# Private maintainer workspace.
 /dev/
-
-# Defense in depth: the supported vault lives outside the code tree.
-/vault/
-/.open-decade-vault
-
-# Local credentials; sanitized examples may be versioned deliberately.
 .env
 .env.*
-!.env.example
-
-# Local dependencies, generated output, and diagnostics.
 node_modules/
-coverage/
-dist/
-.cache/
 *.log
 .DS_Store
-
-# Rebuilt browser bundle.
-/web/
-
-/test-results/
-/playwright-report/
-
-/release-results/
+.claude/settings.local.json

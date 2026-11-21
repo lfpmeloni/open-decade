@@ -1,0 +1,7 @@
+symbol,provider,quantity,currency,asset_class,account,price,price_date
+CASH-USD,manual,15000,USD,cash,Bank,1,2026-11-01
+VT,yahoo,120,USD,equity,Broker,,
+BND,yahoo,80,USD,fixed_income,Broker,,
+VWRA.L,yahoo,50,USD,equity,Broker,,
+GLD,yahoo,10,USD,alternatives,Broker,,
+BTC-USD,yahoo,0.05,USD,crypto,Exchange,,

@@ -1,137 +1,81 @@
-# Open-decade
+# open-decade
 
-Open-decade is an open-source project for understanding your financial picture:
-accounts, assets, debts, cashflow, and goals. The intended experience is a
-conversation with your chosen agent, backed by local records, reproducible
-calculations, and readable methods.
+**A free, open-source personal investment agent that runs on your own computer.**
 
-Open-decade is independent and is not affiliated with, endorsed by, or connected
-to Decade or any other financial company.
+Tell it what you own. It reads live market prices, x-rays your portfolio, lists what needs
+attention, and builds an optimized target portfolio with concrete next steps — and you can
+chat with it about any of it. The reasoning is done by [Claude Code](https://claude.com/claude-code)
+running in the background; everything it learns about you is stored as plain files in `data/`
+on your machine.
 
-## Current status
+Free for anyone to use, forever (Apache-2.0). Not financial advice — it is decision support; you decide and execute.
 
-The offline CLI is implemented locally for schema versions 1 and 2. It uses confirmed,
-user-supplied records. Normal reports run offline; optional ECB reference FX requires
-an explicit fetch and confirmation. Installed
-availability is owned by the [capability registry](src/capabilities.mjs):
+## What you get
 
-```bash
-node bin/od.mjs capabilities --json
-```
+- **Portfolio** — your assets valued at live prices, by asset class and currency, with stale/missing prices flagged
+- **Attention points** — prioritized issues to fix (reserve, concentration, drift, costs, missing info)
+- **Optimized target** — the allocation to aim for, why, and the trades to get there
+- **Chat** — ask anything about your portfolio; it updates your profile and holdings as you talk
+- **History** — every chat, market reading and recommendation is kept, dated
 
-This is version 0.1.0 development software, not a published release. Verified production connections, built-in OCR, tax calculations, trading and money
-transfers are unavailable. An [experimental IBKR Flex reporting path](workflows/connections.md)
-has credential-free protocol tests; real consent/sync/revocation remains unverified. Scoped 2025 tax document modules cover seven
-jurisdictions; they produce no filing decisions. The [development roadmap](docs/roadmap.md) describes rounds
-5–16; future work is not installed availability. [Verified recovery](workflows/recovery.md)
-provides backup, restore, and explicit migration to richer schema-2 records. See the registry's linked workflows and limitations.
+## Quick start
 
-## First use
-
-Install Node **24.20.0** and npm **11.19.0**, then run `npm ci` from this checkout.
-Use an external vault and start with read-only diagnostics:
-
-```bash
-node bin/od.mjs doctor --json
-```
-
-Follow the [local workflow](workflows/local-analysis.md) for explicit initialization,
-manual/CSV preview and confirmation, reports, simulations and exports. The same
-workflow explains agent-assisted extraction from text, screenshots and documents;
-interpretation depends on the host and requires confirmation. The runtime accepts
-normalized JSON, lossless standard CSV and [explicit column-mapped CSV](workflows/mapped-import.md).
-The [local browser](workflows/application.md) passes Chromium acceptance in WSL/Linux.
-The stdio MCP adapter passes subprocess/protocol acceptance; individual hosts use
-the documented configuration.
-The browser supports manual account, balance, transaction and goal entry with
-preview/confirmation; Records exposes schema-driven forms for advanced fields.
-A bounded [OFX/QFX bank adapter](workflows/ofx.md) is experimental. Named provider
-layouts are optional follow-up except the existing experimental [Wise COMPACT CSV profile](workflows/provider-imports.md). [Spending](workflows/spending.md),
-[policy reviews](workflows/policy-review.md), [goal allocations and drafts](workflows/allocation-plans.md), [retirement/housing scenarios](workflows/life-planning.md), [tax documents](workflows/tax.md),
-[local reviews and exports](workflows/reviews.md) and optional
-[reference FX](workflows/public-data.md) and [economic series](workflows/economic-data.md) have separate documented limits.
-
-New browser vaults use schema 2. CLI initialization defaults to schema 1 for
-compatibility; use `init --schema 2` for a new schema-2 vault. Existing vaults
-require the explicit migration workflow.
-
-Personal reports use one person’s ownership and debt-responsibility shares.
-An opt-in [household picture](workflows/household.md) explicitly allocates
-gross asset/debt values to participating members; shared vaults have no per-member
-access controls. [Dated comparisons](workflows/comparisons.md) use supplied quotes. Useful partial results identify missing coverage. No market assumptions,
-fees, prices or returns are invented. Read [methods](knowledge/methods.md) before
-interpreting analytical results and [contracts](docs/contracts.md) when preparing
-records. Synthetic fixtures demonstrate the interfaces; they are not personal data.
-
-## Principles
-
-- **Open methods.** Financial understanding should be accessible, inspectable,
-  and improvable. Code and methods remain open; no capability is removed to make
-  a paid tier viable.
-- **User-owned records.** Personalization belongs in your vault, separate from
-  project code. The project adds no telemetry or central portfolio service.
-- **Evidence before conclusions.** Results identify their sources, dates,
-  assumptions, and missing coverage. Unknown values remain unknown.
-- **User control.** The product explains and drafts; financial execution remains
-  outside it.
-- **Independent contributions.** No paid provider placement or compensation tied
-  to what a user holds or trades. Commercial relationships are disclosed.
-- **Useful increments.** New capabilities come from real needs, with a small
-  change, an example, tests, and honest limitations.
-
-Donations, sponsorship, and paid support may support the project. A separately
-operated hosting service must disclose its different privacy boundary and may
-not remove capabilities from the open project. These are project commitments;
-they do not change the license permissions granted to others.
-
-## Privacy, costs, and limits
-
-Local storage does not mean local inference. Your chosen agent may send records,
-tool output, and conversations to its model provider. Its permissions, retention,
-training settings, and costs are separate from Open-decade. The project does not
-promise to enforce privacy settings in an external agent.
-
-Project code and documentation use the [Apache-2.0 license](LICENSE). Agent
-subscriptions and future optional data services may cost money. External source
-data retains its own terms; the project license does not relicense it.
-
-Open-decade is intended as an analytical tool, not a substitute for professional
-financial, legal, or tax advice. It promises no returns. A disclaimer does not
-establish regulatory compliance. See [SECURITY.md](SECURITY.md) for the data and
-security boundaries.
-
-## Help build it
-
-Clone the public source repository:
+Requirements: [Node.js](https://nodejs.org) 22+ and [Claude Code](https://claude.com/claude-code) installed and logged in (`claude` works in your terminal).
 
 ```bash
 git clone https://github.com/lfpmeloni/open-decade.git
+cd open-decade
+npm start            # → http://127.0.0.1:4317
 ```
 
-To review or develop the project now, start with [CONTRIBUTING.md](CONTRIBUTING.md).
-An agent should read [AGENTS.md](AGENTS.md). Before release, run
-`npm run check:release` and follow the [final release review](CONTRIBUTING.md#final-release-check). This repository must contain every
-script, runtime skill, and instruction needed for its advertised capabilities,
-using only the documented prerequisites.
+On first start, `data/` is created from the example in `data.example/`. Replace it with your own:
+edit **Holdings** and **Profile** in the web UI (or the files directly), or just describe your
+assets in the chat. Then click **Refresh prices → Run review → Optimize**.
 
-| Source | Owns |
-|---|---|
-| This README | Purpose, principles, user entry point, and installed capability entry point |
-| [AGENTS.md](AGENTS.md) | Short agent behavior and document routing |
-| [Architecture](docs/architecture.md) | Component boundaries, data lifecycle, and interfaces |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | Development, validation, commits, PRs, and maintenance |
-| [SECURITY.md](SECURITY.md) | Privacy, credentials, publication, backups, and vulnerability handling |
-| [Schema](schemas/batch-v1.json) and [contracts](docs/contracts.md) | Record shapes, invariants, CSV and result envelopes |
-| [Roadmap](docs/roadmap.md) | Completed release scope and optional follow-up |
-| [Schema 2](docs/schema-2.md) | Richer records and migration compatibility |
-| [Capability registry](src/capabilities.mjs) and [generated listing](docs/capabilities.md) | Installed command availability |
-| [Local workflow](workflows/local-analysis.md) | Intake, reports, agent extraction, exports and recovery |
-| [Knowledge index](knowledge/INDEX.md) | Progressive topic routing and dated public catalogue |
-| [Methods](knowledge/methods.md) | Formulas, sources, examples and analytical limitations |
+No npm install, no build, no database, no account. You can also skip the UI and run `claude` in
+this folder — the same agent, skills and data.
 
-Link to these owning sources instead of copying their contents into every guide.
+## Your data stays yours
 
-The [0–16 roadmap](docs/roadmap.md) is complete under the selected local release
-scope. Provider expansion is chosen during use. The [release acceptance record](docs/release-acceptance.json)
-identifies the tested WSL2/Linux runtime and bounded Chromium accessibility baseline.
-The [household showcase](workflows/household.md) uses one confirmed pooled scenario.
+```
+open-decade/
+├── data/              ← YOUR data (gitignored, never committed or uploaded)
+│   ├── profile.md, holdings.csv
+│   ├── market/  attention.json  target.json  recommendations/  chats/
+├── app/               ← framework: local web server + UI
+├── .claude/skills/    ← framework: market data, review, optimize, contribute
+├── knowledge/         ← framework: the investment method
+└── CLAUDE.md          ← framework: the agent's instructions
+```
+
+- The web server listens on `127.0.0.1` only — it is not reachable from other devices.
+- `data/` is plain Markdown/CSV/JSON: readable, portable, easy to back up (copy the folder). To keep it elsewhere (e.g. an encrypted drive), make `data/` a symlink to that folder.
+- Your messages and the files the agent reads go to Anthropic through your Claude Code account, under its terms. Market-data requests send only ticker symbols.
+- **Updating** never touches your data: `git pull`.
+
+## Markets and extending it
+
+Prices come from pluggable providers in `.claude/skills/market-data/providers/`. The default
+covers stocks, ETFs, FX and crypto on most global exchanges. Missing an exchange, country or
+asset type? Ask the agent: *"add a price provider for X"* — the `contribute` skill guides it to
+build, test and package the change as a pull request.
+
+## Contributing
+
+Contributions are the point: every new provider, check or method improvement makes the agent
+better for everyone. Build it while you use it, open a PR, and the maintainer reviews, tests and
+ships it in the next release. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Configuration
+
+| env | default | |
+|---|---|---|
+| `PORT` | `4317` | web UI port |
+| `OD_DATA` | `./data` | data folder location (or symlink `data/` to e.g. an encrypted drive) |
+| `CLAUDE_BIN` | `claude` | Claude Code executable |
+
+The agent runs `claude` with the standard model (`sonnet`) at low effort to keep it fast and cheap.
+
+## License
+
+Apache-2.0. open-decade is an independent project, not affiliated with any company named Decade.

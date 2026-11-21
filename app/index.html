@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>open-decade · Your portfolio</title>
+<style>
+:root{--bg:#f6f7f3;--panel:#fff;--text:#24332d;--muted:#65736c;--line:#dfe5dd;--accent:#32664d;--soft:#edf3ed;--high:#b4433d;--medium:#926815;--low:#397080;--shadow:0 8px 32px #24332d05;color-scheme:light dark;font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit;color:inherit}button,select,textarea{border:1px solid var(--line);border-radius:8px;background:var(--panel)}button{padding:8px 13px;cursor:pointer;font-weight:550}button:hover{background:var(--soft)}button:disabled,select:disabled,textarea:disabled{opacity:.55;cursor:not-allowed}button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}:focus-visible{outline:3px solid var(--accent);outline-offset:3px}a{color:var(--accent)}h1,h2,h3,p{margin:0 0 12px}h1{font-size:22px;letter-spacing:-.8px;font-weight:650}h2{font-size:21px;letter-spacing:-.5px}h3{font-size:15px}small,.muted{color:var(--muted);font-size:13px}.eyebrow{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}.shell{max-width:1500px;margin:auto;padding:32px}header{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:28px}.brand{display:flex;align-items:center;gap:12px}.mark{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--accent);color:white;font-size:22px}.summary{text-align:right}.total{font-size:30px;letter-spacing:-1px;font-variant-numeric:tabular-nums}.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,390px);gap:24px;align-items:start}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}nav{display:flex;gap:6px;padding:12px;border-bottom:1px solid var(--line);overflow:auto}nav button{border-color:transparent;white-space:nowrap;font-size:14px}nav button[aria-current=page]{background:var(--soft);color:var(--accent)}.content{padding:26px;min-height:480px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}.section-head h2{margin:0}.allocations{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:26px 0 32px}.allocation{margin:14px 0}.between{display:flex;justify-content:space-between;gap:12px}.track{height:6px;background:var(--soft);border-radius:6px;overflow:hidden;margin-top:6px}.fill{height:100%;background:var(--accent);border-radius:6px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px;text-align:left}th{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);font-weight:550;white-space:nowrap}th,td{padding:12px 9px;border-bottom:1px solid var(--line);vertical-align:top}th:first-child,td:first-child{padding-left:0}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.badge{display:inline-block;padding:1px 6px;border-radius:4px;background:var(--soft);color:var(--medium);font-size:10px;white-space:nowrap}.notice{padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:13px;margin:16px 0}.empty{padding:40px 0;color:var(--muted)}.attention-item{padding:20px 0;border-bottom:1px solid var(--line);display:flex;gap:12px}.dot{flex:none;width:8px;height:8px;border-radius:50%;margin-top:8px;background:var(--low)}.dot.high{background:var(--high)}.dot.medium{background:var(--medium)}.attention-item p{white-space:pre-wrap}.report{display:block;width:100%;text-align:left;padding:16px;margin-bottom:10px}.report small{display:block;margin-top:4px}.markdown{overflow-wrap:anywhere}.markdown p{margin:12px 0}.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{margin:20px 0 10px;line-height:1.3}.markdown h1{font-size:24px}.markdown h2{font-size:20px}.markdown pre{background:var(--soft);padding:14px;border-radius:8px;overflow:auto;white-space:pre}.markdown code{font:12px/1.6 ui-monospace,monospace;background:var(--soft);padding:2px 4px;border-radius:4px}.markdown pre code{padding:0}.markdown ul,.markdown ol{padding-left:24px}.markdown table{margin:16px 0}.markdown blockquote{border-left:3px solid var(--line);padding-left:14px;color:var(--muted);margin-left:0}textarea{width:100%;resize:vertical;padding:12px;line-height:1.6}#profile-text{min-height:350px}.actions{display:flex;gap:8px;align-items:center;margin-top:12px}.chat{position:sticky;top:24px}.chat-head{padding:20px;border-bottom:1px solid var(--line)}.chat-head h2{font-size:17px;margin-bottom:4px}.chat-controls{display:flex;gap:6px;margin-top:16px}.chat-controls select{width:100%;min-width:0;padding:7px;font-size:13px}.chat-controls button{font-size:12px;padding:7px 9px}.messages{height:420px;overflow:auto;padding:20px;scrollbar-width:thin}.message{margin-bottom:22px}.message .role{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px}.message.user .body{background:var(--soft);padding:11px 13px;border-radius:10px;white-space:pre-wrap;overflow-wrap:anywhere}.message.assistant .body{font-size:14px}.tool{font-size:12px;color:var(--muted);padding:4px 0;overflow-wrap:anywhere}.compose{border-top:1px solid var(--line);padding:16px}.quick{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.quick button{font-size:11px;padding:6px 8px}.compose textarea{min-height:82px;max-height:220px;font-size:14px}.compose .actions{justify-content:space-between}.status{font-size:12px;color:var(--muted)}#notification{margin:0 0 18px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}#notification.error{color:var(--high)}footer{padding:24px 0 0;font-size:12px;color:var(--muted)}[hidden]{display:none!important}dialog{width:min(750px,calc(100% - 32px));border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--text);padding:24px}dialog::backdrop{background:#14281f66}dialog textarea{min-height:320px;font:13px/1.6 ui-monospace,monospace}dialog label{display:block;margin-bottom:10px}.legend{display:flex;gap:16px;margin:12px 0;font-size:12px;color:var(--muted)}.target-fill{background:var(--low)}
+@media(prefers-color-scheme:dark){:root{--bg:#141b17;--panel:#1c2520;--text:#e0e8e1;--muted:#a1b0a5;--line:#344039;--accent:#8dbd9d;--soft:#29372e;--high:#f39890;--medium:#dfbe76;--low:#88b5c2;--shadow:none}button.primary{color:#14281f}}
+@media(max-width:1050px){.shell{padding:22px}.layout{grid-template-columns:minmax(0,1fr) 330px;gap:16px}.content{padding:20px}.allocations{grid-template-columns:1fr;gap:12px}}
+@media(max-width:780px){.shell{padding:18px 12px}.layout{grid-template-columns:1fr}.chat{position:static}.allocations{grid-template-columns:1fr 1fr;gap:20px}.messages{height:360px}header{gap:12px;align-items:start}.total{font-size:24px}.brand{gap:8px}h1{font-size:19px}.mark{width:30px;height:30px}.content{min-height:320px;padding:18px}nav{gap:0;padding:8px}nav button{padding:8px 10px}.summary small{font-size:11px}}
+@media(max-width:420px){.allocations{grid-template-columns:1fr}.brand .muted{display:none}.section-head{align-items:start}.summary{max-width:50%}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header><div class="brand"><span class="mark" aria-hidden="true">↗</span><div><h1>open-decade</h1><div class="muted">A longer view of your money.</div></div></div><div class="summary"><div class="eyebrow">Portfolio value</div><div id="total" class="total">—</div><small id="updated">Loading prices…</small></div></header>
+<div id="notification" role="status" aria-live="polite" hidden></div>
+<div class="layout">
+<main class="card"><nav aria-label="Portfolio sections"><button aria-current="page" data-view="portfolio">Portfolio</button><button data-view="attention">Attention</button><button data-view="target">Target</button><button data-view="reports">Reports</button><button data-view="profile">Profile</button></nav>
+<div class="content">
+<section id="portfolio" aria-labelledby="portfolio-title"><div class="section-head"><h2 id="portfolio-title">Your portfolio</h2><button id="edit-holdings">Edit holdings</button></div><div id="portfolio-body"><p class="muted">Loading your portfolio…</p></div></section>
+<section id="attention" aria-labelledby="attention-title" hidden><h2 id="attention-title">Worth your attention</h2><div id="attention-body"></div></section>
+<section id="target" aria-labelledby="target-title" hidden><h2 id="target-title">Your target portfolio</h2><div id="target-body"></div></section>
+<section id="reports" aria-labelledby="reports-title" hidden><h2 id="reports-title">Reports</h2><div id="reports-list"></div><article id="report-body" class="markdown" hidden></article></section>
+<section id="profile" aria-labelledby="profile-title" hidden><h2 id="profile-title">Investor profile</h2><p class="muted">Your goals, preferences, and constraints guide the agent.</p><form id="profile-form"><label for="profile-text" class="eyebrow">Profile · Markdown</label><textarea id="profile-text" spellcheck="false"></textarea><div class="actions"><button class="primary" type="submit">Save profile</button><span id="profile-status" class="status" role="status"></span></div></form></section>
+</div></main>
+<aside class="card chat" aria-labelledby="chat-title"><div class="chat-head"><h2 id="chat-title">Think it through</h2><div class="muted">Your personal investment agent</div><div class="chat-controls"><select id="chat-select" aria-label="Choose a conversation"><option value="">New conversation</option></select><button id="new-chat">New</button><button id="delete-chat" disabled>Delete</button></div></div>
+<div id="messages" class="messages" aria-label="Conversation" aria-busy="false"><p class="empty">Ask about your portfolio, or start with an action below.</p></div>
+<form id="chat-form" class="compose"><div class="quick"><button type="button" data-prompt="Refresh market prices for my holdings.">Refresh prices</button><button type="button" data-prompt="Run a portfolio review and update my attention points.">Run review</button><button type="button" data-prompt="Build my optimized target portfolio from my current assets and profile.">Optimize</button></div><label for="chat-input" class="eyebrow">Message</label><textarea id="chat-input" placeholder="What would you like to explore?" required></textarea><div class="actions"><span id="chat-status" class="status" role="status" aria-live="polite">Enter to send · Shift+Enter for a new line</span><button id="send" class="primary" type="submit">Send ↗</button></div></form></aside>
+</div><footer>Your data stays in ./data on this computer. Not financial advice.</footer>
+</div>
+<dialog id="holdings-dialog" aria-labelledby="holdings-title"><h2 id="holdings-title">Edit holdings</h2><p class="muted">One holding per row. Keep the CSV header, including any optional price columns.</p><form id="holdings-form"><label for="holdings-text">Holdings · CSV</label><textarea id="holdings-text" spellcheck="false"></textarea><div class="actions"><button class="primary" type="submit">Save holdings</button><button type="button" id="cancel-holdings">Cancel</button><span id="holdings-status" class="status" role="status"></span></div></form></dialog>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const esc = text => String(text ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const number = n => n == null ? '—' : new Intl.NumberFormat(undefined,{maximumFractionDigits:4}).format(n);
+const percent = n => new Intl.NumberFormat(undefined,{style:'percent',maximumFractionDigits:1}).format(n || 0);
+let state, chatId = '', running = false, profileDirty = false, reportRequest = 0, chatRequest = 0;
+function money(n, currency = state?.snapshot?.baseCurrency || 'USD') {
+  if(n == null) return '—';
+  try { return new Intl.NumberFormat(undefined,{style:'currency',currency,maximumFractionDigits:2}).format(n); }
+  catch { return `${number(n)} ${currency}`; }
+}
+function date(value) { const d = new Date(value); return value && Number.isFinite(+d) ? d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}) : '—'; }
+function ago(value) {
+  if(!value || !Number.isFinite(Date.parse(value))) return 'Prices not updated yet';
+  const seconds = Math.max(0,Math.floor((Date.now()-Date.parse(value))/1000));
+  const [amount,unit] = seconds < 60 ? [seconds,'second'] : seconds < 3600 ? [Math.floor(seconds/60),'minute'] : seconds < 86400 ? [Math.floor(seconds/3600),'hour'] : [Math.floor(seconds/86400),'day'];
+  return `Prices updated ${amount} ${unit}${amount === 1 ? '' : 's'} ago`;
+}
+function notify(text, error = false) { $('notification').textContent = text; $('notification').classList.toggle('error',error); $('notification').hidden = !text; }
+async function api(path, method = 'GET', body) {
+  const response = await fetch(path,{method,headers:body === undefined ? {} : {'Content-Type':'application/json'},body:body === undefined ? undefined : JSON.stringify(body)});
+  const data = await response.json();
+  if(!response.ok) throw new Error(data.error || `Request failed (${response.status})`);
+  return data;
+}
+// Escape all source HTML before adding the small set of supported Markdown elements.
+function markdown(source) {
+  const lines = esc(source).replace(/\r\n?/g,'\n').split('\n');
+  const inline = s => s.split(/(`[^`]+`)/g).map(part => part.startsWith('`') ? `<code>${part.slice(1,-1)}</code>` : part.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')).join('');
+  const cells = line => line.trim().replace(/^\|/,'').replace(/\|$/,'').split('|').map(s=>s.trim());
+  const special = i => /^(#{1,6}\s|\s*```|\s*[-*+]\s|\s*\d+\.\s|&gt;\s)/.test(lines[i] || '') || (i+1 < lines.length && lines[i].includes('|') && /^\s*\|?\s*:?-{3,}/.test(lines[i+1]));
+  let html = '', i = 0;
+  while(i < lines.length) {
+    const line = lines[i];
+    if(!line.trim()) { i++; continue; }
+    if(/^\s*```/.test(line)) {
+      const code = []; i++; while(i < lines.length && !/^\s*```/.test(lines[i])) code.push(lines[i++]);
+      if(i < lines.length) i++; html += `<pre><code>${code.join('\n')}</code></pre>`; continue;
+    }
+    const heading = line.match(/^(#{1,6})\s+(.+)$/);
+    if(heading) { html += `<h${heading[1].length}>${inline(heading[2])}</h${heading[1].length}>`; i++; continue; }
+    if(i+1 < lines.length && line.includes('|') && cells(lines[i+1]).every(s=>/^:?-{3,}:?$/.test(s))) {
+      const heads = cells(line); html += '<div class="table-wrap"><table><thead><tr>'+heads.map(s=>`<th>${inline(s)}</th>`).join('')+'</tr></thead><tbody>'; i+=2;
+      while(i < lines.length && lines[i].trim() && lines[i].includes('|')) { const row = cells(lines[i++]); html += '<tr>'+heads.map((_,n)=>`<td>${inline(row[n] || '')}</td>`).join('')+'</tr>'; }
+      html += '</tbody></table></div>'; continue;
+    }
+    const list = line.match(/^\s*([-*+]|\d+\.)\s+(.+)$/);
+    if(list) {
+      const ordered = /\d/.test(list[1]), tag = ordered ? 'ol' : 'ul'; html += `<${tag}>`;
+      while(i < lines.length) { const item = lines[i].match(ordered ? /^\s*\d+\.\s+(.+)$/ : /^\s*[-*+]\s+(.+)$/); if(!item) break; html += `<li>${inline(item[1])}</li>`; i++; }
+      html += `</${tag}>`; continue;
+    }
+    if(/^&gt;\s/.test(line)) { html += `<blockquote>${inline(line.replace(/^&gt;\s/,''))}</blockquote>`; i++; continue; }
+    const paragraph = [line]; i++; while(i < lines.length && lines[i].trim() && !special(i)) paragraph.push(lines[i++]);
+    html += `<p>${inline(paragraph.join('\n')).replace(/\n/g,'<br>')}</p>`;
+  }
+  return html;
+}
+function bar(weight, extra = '') { return `<div class="track"><div class="fill ${extra}" style="width:${Math.min(100,Math.max(0,Number(weight)*100 || 0))}%"></div></div>`; }
+function table(heads, rows) { return `<div class="table-wrap"><table><thead><tr>${heads.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`; }
+function allocation(rows, key) { return rows.map(row=>`<div class="allocation"><div class="between"><span>${esc(row[key] || 'Other')}</span><span>${percent(row.weight)}</span></div>${bar(row.weight)}<small>${esc(money(row.value))}</small></div>`).join('') || '<p class="muted">No valued holdings yet.</p>'; }
+function renderState() {
+  const s = state.snapshot;
+  $('total').textContent = money(s.total); $('updated').textContent = ago(state.quotesUpdated);
+  $('portfolio-body').innerHTML = `<p class="muted">${s.positions.length} positions · Values in ${esc(s.baseCurrency)}</p>`+
+    (s.missing.length ? `<div class="notice">Missing price or exchange rate: ${s.missing.map(esc).join(', ')}. These positions are excluded from the total.</div>` : '')+
+    `<div class="allocations"><div><h3>By asset class</h3>${allocation(s.byClass,'asset_class')}</div><div><h3>By currency</h3>${allocation(s.byCurrency,'currency')}</div></div><h3>Positions</h3>`+
+    (s.positions.length ? table(['Symbol','Account','Class','Qty','Price','Value · '+s.baseCurrency,'Weight'],s.positions.map(p=>`<tr><td><strong>${esc(p.symbol)}</strong>${p.stale ? ' <span class="badge">Stale</span>' : ''}${p.valueBase == null ? ' <span class="badge">Missing</span>' : ''}</td><td>${esc(p.account || '—')}</td><td>${esc(p.asset_class || '—')}</td><td class="num">${number(p.quantity)}</td><td class="num" title="${esc(p.priceSource)} · ${esc(date(p.priceDate))}">${esc(money(p.price,p.currency))}</td><td class="num">${esc(money(p.valueBase))}</td><td class="num">${p.valueBase == null ? '—' : percent(p.weight)}</td></tr>`)) : '<p class="empty">Add your holdings to see your portfolio here.</p>');
+  const rank = {high:0,medium:1,low:2};
+  $('attention-body').innerHTML = state.attention.length ? [...state.attention].sort((a,b)=>(rank[a.severity] ?? 3)-(rank[b.severity] ?? 3)).map(a=>`<div class="attention-item"><span class="dot ${['high','medium','low'].includes(a.severity) ? a.severity : 'low'}" aria-label="${esc(a.severity)} severity" role="img"></span><div><h3>${esc(a.title)}</h3><p>${esc(a.detail)}</p><small>${esc(date(a.date))} · ${esc(a.severity)}</small></div></div>`).join('') : '<p class="empty">No review yet — click Run review.</p>';
+  const t = state.target;
+  $('target-body').innerHTML = !t ? '<p class="empty">No target yet — click Optimize to build a portfolio around your goals.</p>' : `<p class="muted">${esc(date(t.date))} · ${esc(t.base_currency || s.baseCurrency)}</p><p>${esc(t.method)}</p><div class="legend"><span>Current · green</span><span>Target · blue</span></div>`+
+    table(['Allocation','Current / target','Drift'],state.drift.map(d=>`<tr><td>${esc(d.key)}<br><small>${esc(d.kind)}</small></td><td>${percent(d.current)} / ${percent(d.target)}${bar(d.current)}${bar(d.target,'target-fill')}</td><td class="num">${d.diff>0?'+':''}${number(d.diff*100)} pp</td></tr>`))+
+    (t.allocations || []).filter(a=>a.rationale).map(a=>`<p class="muted"><strong>${esc(a.key)}:</strong> ${esc(a.rationale)}</p>`).join('')+
+    '<h3 style="margin-top:24px">Proposed trades</h3>' + ((t.trades || []).length ? table(['Symbol','Action','Amount','Why'],t.trades.map(t=>`<tr><td>${esc(t.symbol)}</td><td>${esc(t.action)}</td><td class="num">${esc(money(t.amount,t.currency))}</td><td>${esc(t.why)}</td></tr>`)) : '<p class="muted">No trades proposed.</p>');
+  $('reports-list').innerHTML = state.recommendations.length ? state.recommendations.map(r=>`<button class="report" data-file="${esc(r.file)}">${esc(r.title)}<small>${esc(date(r.date))}</small></button>`).join('') : '<p class="empty">Your saved analyses will appear here after a review.</p>';
+  if(!profileDirty) $('profile-text').value = state.profile;
+  setBusy();
+}
+async function refreshState() { state = await api('/api/state'); renderState(); }
+function setBusy() {
+  const busy = running || !!state?.busy;
+  for(const el of document.querySelectorAll('#chat-form button, #chat-input, #chat-select, #new-chat')) el.disabled = busy;
+  $('delete-chat').disabled = busy || !chatId;
+  $('messages').setAttribute('aria-busy',String(busy));
+  $('chat-status').textContent = busy ? 'Agent is working…' : 'Enter to send · Shift+Enter for a new line';
+}
+async function refreshChats() {
+  const chats = await api('/api/chats');
+  $('chat-select').innerHTML = '<option value="">New conversation</option>'+chats.map(c=>`<option value="${esc(c.id)}">${esc(c.title)}</option>`).join('');
+  $('chat-select').value = chatId; setBusy();
+}
+function message(role, text) {
+  const el = document.createElement('div'); el.className = 'message '+role;
+  el.innerHTML = `<div class="role">${role === 'user' ? 'You' : 'Agent'}</div><div class="body"></div>`;
+  if(role === 'user') el.lastElementChild.textContent = text; else el.lastElementChild.innerHTML = markdown(text);
+  $('messages').append(el); return el.lastElementChild;
+}
+function scrollChat() { $('messages').scrollTop = $('messages').scrollHeight; }
+async function selectChat(id) {
+  const request = ++chatRequest;
+  if(!id) { chatId = ''; $('messages').innerHTML = '<p class="empty">Ask about your portfolio, or start with an action below.</p>'; setBusy(); return; }
+  const chat = await api('/api/chats/'+encodeURIComponent(id));
+  if(request !== chatRequest) return;
+  chatId = id; $('messages').replaceChildren();
+  for(const m of chat.messages) message(m.role === 'user' ? 'user' : 'assistant',m.text);
+  scrollChat(); setBusy();
+}
+async function send(text) {
+  if(running || state?.busy || !text.trim()) return;
+  running = true; setBusy(); notify('');
+  if($('messages').querySelector('.empty')) $('messages').replaceChildren();
+  message('user',text); $('chat-input').value = '';
+  const answer = message('assistant',''); let accumulated = '', completed = false;
+  scrollChat();
+  try {
+    const response = await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...(chatId ? {id:chatId} : {}),text})});
+    if(!response.ok) { const e = await response.json(); throw new Error(e.error || 'Could not send message'); }
+    if(!response.body) throw new Error('Streaming is unavailable in this browser.');
+    const reader = response.body.getReader(), decoder = new TextDecoder(); let buffer = '';
+    function event(block) {
+      let type = 'message'; const data = [];
+      for(const line of block.split('\n')) { if(line.startsWith('event:')) type = line.slice(6).trim(); if(line.startsWith('data:')) data.push(line.slice(5).trimStart()); }
+      if(!data.length) return;
+      const value = JSON.parse(data.join('\n'));
+      if(type === 'chat') chatId = value.id;
+      if(type === 'delta') { accumulated += value.text; answer.innerHTML = markdown(accumulated); }
+      if(type === 'tool') { const tool = document.createElement('div'); tool.className = 'tool'; tool.textContent = `using ${value.name}…`; tool.title = value.detail || ''; answer.parentElement.insertBefore(tool,answer); }
+      if(type === 'done') { completed = true; chatId = value.id; answer.innerHTML = markdown(value.text ?? accumulated); }
+      if(type === 'error') throw new Error(value.message || 'Agent failed');
+      scrollChat();
+    }
+    while(true) {
+      const {value,done} = await reader.read(); buffer += decoder.decode(value,{stream:!done}).replace(/\r/g,'');
+      let end; while((end = buffer.indexOf('\n\n')) !== -1) { const block = buffer.slice(0,end); buffer = buffer.slice(end+2); event(block); }
+      if(done) { if(buffer.trim()) event(buffer); break; }
+    }
+    if(!completed) throw new Error('Connection ended before the agent finished. The run may still complete; your conversation is saved.');
+  } catch(error) { notify(error.message,true); if(!answer.textContent) answer.textContent = 'No reply received. See the message above.'; }
+  finally {
+    running = false;
+    const results = await Promise.allSettled([refreshState(),refreshChats()]);
+    for(const result of results) if(result.status === 'rejected') notify(result.reason.message,true);
+    setBusy(); if(!state?.busy) $('chat-input').focus();
+  }
+}
+document.querySelector('nav').addEventListener('click',e=>{
+  const button = e.target.closest('[data-view]'); if(!button) return;
+  for(const b of document.querySelectorAll('nav button')) { if(b === button) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); }
+  for(const section of document.querySelectorAll('main section')) section.hidden = section.id !== button.dataset.view;
+});
+$('reports-list').addEventListener('click',async e=>{
+  const button = e.target.closest('[data-file]'); if(!button) return;
+  const request = ++reportRequest; $('report-body').hidden = false; $('report-body').textContent = 'Loading report…';
+  try { const report = await api('/api/recommendations/'+encodeURIComponent(button.dataset.file)); if(request === reportRequest) $('report-body').innerHTML = markdown(report.markdown); }
+  catch(error) { if(request === reportRequest) $('report-body').textContent = error.message; }
+});
+$('profile-text').addEventListener('input',()=>{ profileDirty = true; $('profile-status').textContent = 'Unsaved changes'; });
+$('profile-form').addEventListener('submit',async e=>{
+  e.preventDefault(); const button = e.submitter, saved = $('profile-text').value; button.disabled = true;
+  try { await api('/api/profile','PUT',{markdown:saved}); profileDirty = $('profile-text').value !== saved; $('profile-status').textContent = profileDirty ? 'Unsaved changes' : 'Saved'; await refreshState(); }
+  catch(error) { notify(error.message,true); } finally { button.disabled = false; }
+});
+$('edit-holdings').addEventListener('click',async()=>{
+  $('edit-holdings').disabled = true;
+  try { const data = await api('/api/holdings'); $('holdings-text').value = data.csv; $('holdings-status').textContent = ''; $('holdings-dialog').showModal(); }
+  catch(error) { notify(error.message,true); } finally { $('edit-holdings').disabled = false; }
+});
+$('cancel-holdings').addEventListener('click',()=>$('holdings-dialog').close());
+$('holdings-form').addEventListener('submit',async e=>{
+  e.preventDefault(); const button = e.submitter; button.disabled = true;
+  try { await api('/api/holdings','PUT',{csv:$('holdings-text').value}); $('holdings-dialog').close(); await refreshState(); notify('Holdings saved.'); }
+  catch(error) { $('holdings-status').textContent = error.message; } finally { button.disabled = false; }
+});
+$('chat-select').addEventListener('change',async e=>{ try { await selectChat(e.target.value); } catch(error) { $('chat-select').value = chatId; notify(error.message,true); } });
+$('new-chat').addEventListener('click',()=>{ $('chat-select').value = ''; selectChat(''); $('chat-input').focus(); });
+$('delete-chat').addEventListener('click',async()=>{
+  if(!chatId || !confirm('Delete this conversation?')) return;
+  try { await api('/api/chats/'+encodeURIComponent(chatId),'DELETE'); await selectChat(''); await refreshChats(); }
+  catch(error) { notify(error.message,true); }
+});
+$('chat-form').addEventListener('submit',e=>{ e.preventDefault(); send($('chat-input').value.trim()); });
+$('chat-input').addEventListener('keydown',e=>{ if(e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); if(!$('send').disabled) $('chat-form').requestSubmit(); } });
+for(const button of document.querySelectorAll('[data-prompt]')) button.addEventListener('click',()=>send(button.dataset.prompt));
+async function init() { const results = await Promise.allSettled([refreshState(),refreshChats()]); for(const r of results) if(r.status === 'rejected') notify(r.reason.message,true); }
+init();
+// A different tab, or a disconnected stream, may still have an agent running.
+setInterval(async()=>{ if(!running && state?.busy) { try { await refreshState(); if(!state.busy) { await refreshChats(); if(chatId) await selectChat(chatId); } } catch(error) { notify(error.message,true); } } if(state) $('updated').textContent = ago(state.quotesUpdated); },5000);
+</script>
+</body>
+</html>

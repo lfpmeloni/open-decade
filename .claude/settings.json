@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Edit(/data/**)",
+      "Write(/data/**)",
+      "Bash(node .claude/skills/*)",
+      "Bash(node app/portfolio.mjs*)",
+      "WebSearch",
+      "WebFetch"
+    ],
+    "deny": [
+      "Read(.env*)",
+      "Read(**/.env*)",
+      "Read(/dev/**)"
+    ]
+  }
+}

@@ -1,20 +1,8 @@
-<!-- Follow CONTRIBUTING.md. Use synthetic examples; omit irrelevant details for small changes. -->
+## What this adds
+<!-- e.g. new market-data provider for Tokyo Stock Exchange -->
 
-Problem and intended outcome:
+## How I tested it
+<!-- npm test output; sample symbols that worked -->
 
-Change and scope (including exclusions):
-
-Roadmap follow-up, maintenance need, or scoped issue:
-
-Acceptance example (success, incomplete input, meaningful failure):
-
-Validation performed and results:
-
-Compatibility or migration impact; maintainer agreement if a core contract changes:
-
-Known limitations:
-
-<!-- Review the entire diff for unrelated changes, private data, unnecessary dependencies,
-and weakened regression tests. AI-assisted contributions have the same review requirements.
-Full final acceptance is required before release; publication remains a maintainer decision.
-See https://github.com/lfpmeloni/open-decade/blob/main/CONTRIBUTING.md -->
+- [ ] No personal data (nothing from `data/`), no API keys
+- [ ] `npm test` passes
